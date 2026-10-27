@@ -65,7 +65,7 @@ export function LeadForm({
           <CtaButton href={bookingUrl} location="final-band" className="mt-7" />
           <ul className="mt-8 space-y-3 text-sm text-cta-muted">
             {[
-              { line: "15-minute call â€” no pitch deck marathon", icon: Icons.clock },
+              { line: "15-minute call â€" no pitch deck marathon", icon: Icons.clock },
               { line: "Official Meta API setup guidance", icon: Icons.plug },
               { line: "No revenue share, ever", icon: Icons.dollar },
             ].map((item) => (

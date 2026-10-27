@@ -19,7 +19,7 @@ export default function CookiesPage() {
       </p>
       <p className="mt-4 text-sm leading-relaxed text-muted">
         If an analytics ID is configured, a privacy-friendly script may load. No consent box is
-        pre-checked on the lead form. Booking links may set cookies on the calendar provider’s
+        pre-checked on the lead form. Booking links may set cookies on the calendar provider's
         domain.
       </p>
       <p className="mt-4 text-sm text-muted">Contact: {site.legal.supportEmail}.</p>

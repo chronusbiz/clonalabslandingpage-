@@ -25,7 +25,7 @@ export function UniboxMock() {
     <figure className="w-full">
       <div
         className="overflow-hidden rounded-2xl border border-[#d7e0ef] bg-[#eef3fb] shadow-[0_28px_80px_rgba(15,23,42,0.28)]"
-        aria-label="Clonvo Unibox â€” illustrative white-label inbox"
+        aria-label="Clonvo Unibox â€" illustrative white-label inbox"
       >
         <div className="flex items-center gap-3 border-b border-[#d7e0ef] bg-white px-3 py-2.5">
           <p className="hidden text-[11px] text-slate-400 sm:block">
@@ -117,7 +117,7 @@ export function UniboxMock() {
                 </span>
               </div>
               <span className="shrink-0 rounded-full bg-[#e8f9ee] px-2.5 py-1 text-[10px] font-semibold text-[#128a3e]">
-                AI on â€” take over
+                AI on â€" take over
               </span>
             </div>
 
@@ -203,7 +203,7 @@ export function UniboxScreenshot() {
         </div>
         <Image
           src="/unibox-inbox.png"
-          alt="Clonvo Unibox inbox â€” unified WhatsApp, Instagram and Messenger conversations with AI replies"
+          alt="Clonvo Unibox inbox â€" unified WhatsApp, Instagram and Messenger conversations with AI replies"
           className="block h-auto w-full"
           width={1200}
           height={750}

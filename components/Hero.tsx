@@ -82,7 +82,7 @@ export function Hero({
             </div>
             <Image
               src="/unibox-inbox.png"
-              alt="Branded Unibox inbox â€” WhatsApp, Instagram and Messenger in one place"
+              alt="Branded Unibox inbox â€" WhatsApp, Instagram and Messenger in one place"
               width={1600}
               height={1000}
               priority
