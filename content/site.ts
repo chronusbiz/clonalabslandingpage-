@@ -31,17 +31,17 @@ export const site = {
   hero: {
     default: {
       h1: "Sell AI inquiry handling under your own brand.",
-      sub: "Your logo. Your domain. Your clients. We run the Unibox â€" WhatsApp, Instagram and Messenger, with cited AI replies.",
+      sub: "Your logo. Your domain. Your clients. We run the Unibox â€” WhatsApp, Instagram and Messenger, with cited AI replies.",
     },
     afterHours: {
       h1: "Who answers your clientsâ€™ inquiries after hours?",
-      sub: "Offer a branded Unibox that answers, captures leads and hands off to a human. You keep the relationship â€" we run the platform.",
+      sub: "Offer a branded Unibox that answers, captures leads and hands off to a human. You keep the relationship â€” we run the platform.",
     },
   },
   trust: {
     h2: "Built for Meta channels",
     intro:
-      "WhatsApp, Instagram and Messenger are live today via official Meta APIs â€" same inbox your clients already expect.",
+      "WhatsApp, Instagram and Messenger are live today via official Meta APIs â€” same inbox your clients already expect.",
     channels: [
       { name: "WhatsApp Business", status: "Connected" },
       { name: "Instagram Direct", status: "Connected" },
@@ -132,7 +132,7 @@ export const site = {
       "Your logo, colours and domain. Separate workspaces per business client. You stay the face of the relationship.",
     bullets: [
       "Wordmark and colours on login and dashboard",
-      "One custom domain â€" app.youragency.com",
+      "One custom domain â€” app.youragency.com",
       "One workspace per business client",
     ],
   },
@@ -225,12 +225,12 @@ export const site = {
     },
     math: {
       title: "Illustrative, not a promise of earnings",
-      body: "3 clients Ã- $299 = $897; minus the $149 Launch subscription = $748 before your labour, WhatsApp spend, extra usage and other costs. This is not net profit.",
+      body: "3 clients Ã— $299 = $897; minus the $149 Launch subscription = $748 before your labour, WhatsApp spend, extra usage and other costs. This is not net profit.",
     },
   },
   launch: {
     h2: "How to launch",
-    intro: "From first call to first AI reply â€" usually the same week.",
+    intro: "From first call to first AI reply â€” usually the same week.",
     steps: [
       {
         title: "Book a walkthrough",
@@ -312,7 +312,7 @@ export const site = {
     threads: [
       {
         name: "Dan M.",
-        preview: "Furnace wonâ€™t kick on â€" can someone come tonight?",
+        preview: "Furnace wonâ€™t kick on â€” can someone come tonight?",
         time: "2m",
         channel: "WhatsApp" as const,
         unread: true,
@@ -354,11 +354,11 @@ export const site = {
       messages: [
         {
           from: "customer" as const,
-          text: "Furnace wonâ€™t kick on â€" can someone come tonight?",
+          text: "Furnace wonâ€™t kick on â€” can someone come tonight?",
         },
         {
           from: "ai" as const,
-          text: "Sorry youâ€™re dealing with that. We cover evening emergencies in 43004â€"43081. Can I take your ZIP and a callback number?",
+          text: "Sorry youâ€™re dealing with that. We cover evening emergencies in 43004â€“43081. Can I take your ZIP and a callback number?",
           source: "Service area.pdf Â· after-hours",
         },
       ],

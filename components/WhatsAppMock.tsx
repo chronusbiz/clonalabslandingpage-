@@ -16,7 +16,7 @@ export function MessengerMock() {
             </span>
           </div>
           <span className="rounded-full bg-[#e8f9ee] px-2.5 py-1 text-[10px] font-semibold text-[#128a3e]">
-            AI on â€" take over
+            AI on â€” take over
           </span>
         </div>
         <ul className="space-y-3 bg-[#f5f8fc] p-4">

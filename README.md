@@ -1,4 +1,4 @@
-# Clonalabs â€" agency white-label landing page
+# Clonalabs â€” agency white-label landing page
 
 Single-page B2B landing for **clonalabs.ca**. One goal: book a 15-minute walkthrough of the Clonvo white-label platform.
 

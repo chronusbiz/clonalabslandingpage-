@@ -10,7 +10,7 @@ export function Opportunity() {
       <SectionEyebrow>The agency opportunity</SectionEyebrow>
       <SectionTitle>{site.opportunity.h2}</SectionTitle>
       <SectionLead>
-        Meet customers where they already are â€" WhatsApp, Instagram and Messenger.
+        Meet customers where they already are â€” WhatsApp, Instagram and Messenger.
       </SectionLead>
       <ol className="mt-10 grid gap-8 border-t border-line pt-10 md:grid-cols-3 md:gap-8">
         {site.opportunity.points.map((p, i) => {
