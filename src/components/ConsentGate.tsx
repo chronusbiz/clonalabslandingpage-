@@ -1,11 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import Script from "next/script";
 
 const STORAGE_KEY = "cookie-consent";
 const EVENT_NAME = "clonalabs:consent-changed";
+
+const GA_ID =
+  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ||
+  process.env.NEXT_PUBLIC_ANALYTICS_ID ||
+  "";
 
 export type ConsentValue = "accepted" | "declined";
 
@@ -21,18 +25,11 @@ export function setConsent(value: ConsentValue) {
   window.dispatchEvent(new CustomEvent(EVENT_NAME, { detail: value }));
 }
 
-/**
- * Mounts Vercel Analytics + SpeedInsights only after the visitor has
- * explicitly accepted cookies. Required for ePrivacy / GDPR compliance:
- * non-essential trackers must not fire before consent.
- */
+/** Loads Google Analytics 4 only after the visitor accepts cookies. */
 export default function ConsentGate() {
   const [accepted, setAccepted] = useState<boolean>(false);
 
   useEffect(() => {
-    // Sync local state to the localStorage value on mount and on cross-tab
-    // / in-tab consent changes. This is the canonical "subscribe to an
-    // external store" use case for setState-in-effect.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setAccepted(getConsent() === "accepted");
     const onChange = (e: Event) => {
@@ -43,12 +40,20 @@ export default function ConsentGate() {
     return () => window.removeEventListener(EVENT_NAME, onChange);
   }, []);
 
-  if (!accepted) return null;
+  if (!accepted || !GA_ID.startsWith("G-")) return null;
 
   return (
     <>
-      <Analytics />
-      <SpeedInsights />
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+        strategy="afterInteractive"
+      />
+      <Script id="ga4-init" strategy="afterInteractive">{`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '${GA_ID}', { anonymize_ip: true });
+      `}</Script>
     </>
   );
 }

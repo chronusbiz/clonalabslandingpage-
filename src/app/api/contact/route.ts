@@ -161,9 +161,46 @@ export async function POST(request: Request) {
       );
     }
 
+    const cmsUrl = (
+      process.env.CMS_URL ||
+      process.env.NEXT_PUBLIC_CMS_URL ||
+      "https://cms.fousventures.com"
+    ).replace(/\/$/, "");
+    const cmsSite =
+      process.env.CMS_SITE || process.env.NEXT_PUBLIC_CMS_SITE || "clonalabs";
+
+    // Primary: Studio CMS submissions inbox (+ notify emails configured there).
+    try {
+      const cmsRes = await fetch(`${cmsUrl}/api/v1/sites/${cmsSite}/submit-form`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          form_name: data.intent || "contact",
+          payload: {
+            ...data,
+            source: "clonalabs.ca",
+            submittedAt: new Date().toISOString(),
+          },
+        }),
+      });
+      if (!cmsRes.ok) {
+        const body = await cmsRes.text().catch(() => "");
+        if (!isProd) console.error("[contact] cms failed", cmsRes.status, body);
+        return NextResponse.json(
+          { ok: false, error: "Could not save your message" },
+          { status: 502 }
+        );
+      }
+    } catch (cmsErr) {
+      if (!isProd) console.error("[contact] cms error", cmsErr);
+      return NextResponse.json(
+        { ok: false, error: "Could not reach form service" },
+        { status: 502 }
+      );
+    }
+
+    // Optional direct email (Resend / Gmail) in addition to CMS notifications.
     const toEmail = process.env.CONTACT_TO_EMAIL || DEFAULT_TO_EMAIL;
-    // Inbox-friendly subject lines: prefix tells you instantly whether
-    // it is a sales inquiry, a quote request, or a job application.
     const subject = (() => {
       const who = data.name || data.email || "Anonymous";
       switch (data.intent) {
@@ -214,21 +251,11 @@ export async function POST(request: Request) {
           replyTo,
         });
       } else if (!isProd) {
-        // Dev fallback — log to console only, never in production logs.
-        console.log(`[contact] no email transport configured; would send to ${toEmail}\n${text}`);
-      } else {
-        // In production with no transport, fail loud so submissions aren't lost silently.
-        return NextResponse.json(
-          { ok: false, error: "Email service not configured" },
-          { status: 500 }
-        );
+        console.log(`[contact] no email transport; CMS saved. Would also email ${toEmail}\n${text}`);
       }
     } catch (sendErr) {
       if (!isProd) console.error("[contact] send error:", sendErr);
-      return NextResponse.json(
-        { ok: false, error: "Email service error" },
-        { status: 502 }
-      );
+      // CMS already stored the lead — do not fail the user request.
     }
 
     return NextResponse.json({ ok: true });
