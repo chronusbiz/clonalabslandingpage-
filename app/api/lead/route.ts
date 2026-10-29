@@ -68,18 +68,39 @@ export async function POST(req: Request) {
     source: "clonalabs.ca",
   };
 
-  const { leadWebhookUrl } = getServerEnv();
-  if (leadWebhookUrl) {
-    const res = await fetch(leadWebhookUrl, {
+  const { leadWebhookUrl, cmsUrl, cmsSite } = getServerEnv();
+
+  // Primary: Studio CMS inbox (+ email notifications configured per site).
+  try {
+    const cmsRes = await fetch(`${cmsUrl}/api/v1/sites/${cmsSite}/submit-form`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
+      body: JSON.stringify({
+        form_name: "lead",
+        payload,
+      }),
     });
-    if (!res.ok) {
-      return NextResponse.json({ ok: false, error: "webhook_failed" }, { status: 502 });
+    if (!cmsRes.ok) {
+      const text = await cmsRes.text().catch(() => "");
+      console.error("[lead] cms submit failed", cmsRes.status, text);
+      return NextResponse.json({ ok: false, error: "cms_failed" }, { status: 502 });
     }
-  } else {
-    console.info("[lead]", payload);
+  } catch (err) {
+    console.error("[lead] cms submit error", err);
+    return NextResponse.json({ ok: false, error: "cms_unreachable" }, { status: 502 });
+  }
+
+  // Optional extra webhook (Zapier / Make / Slack, etc.).
+  if (leadWebhookUrl) {
+    try {
+      await fetch(leadWebhookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+    } catch (err) {
+      console.error("[lead] secondary webhook failed", err);
+    }
   }
 
   return NextResponse.json({ ok: true });

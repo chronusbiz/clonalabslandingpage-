@@ -7,6 +7,12 @@ export type AnalyticsEvent =
   | "pricing_view"
   | "faq_open";
 
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
+
 export function track(
   event: AnalyticsEvent,
   props?: Record<string, string | number | boolean>,
@@ -17,11 +23,8 @@ export function track(
 
   window.dispatchEvent(new CustomEvent("clonalabs:event", { detail: payload }));
 
-  const w = window as Window & {
-    plausible?: (name: string, opts?: { props?: Record<string, unknown> }) => void;
-  };
-  if (typeof w.plausible === "function") {
-    w.plausible(event, { props });
+  if (typeof window.gtag === "function") {
+    window.gtag("event", event, props ?? {});
   }
 
   if (process.env.NODE_ENV !== "production") {

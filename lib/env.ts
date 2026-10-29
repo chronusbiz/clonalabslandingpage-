@@ -13,12 +13,22 @@ export function getPublicEnv() {
       process.env.NEXT_PUBLIC_BOOKING_URL ?? "https://cal.com/clonvo/15min",
     showPricing,
     noindex,
-    analyticsId: process.env.NEXT_PUBLIC_ANALYTICS_ID ?? "",
+    // GA4 Measurement ID (G-…). Prefer NEXT_PUBLIC_GA_MEASUREMENT_ID, fall back to ANALYTICS_ID.
+    analyticsId:
+      process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ||
+      process.env.NEXT_PUBLIC_ANALYTICS_ID ||
+      "",
   };
 }
 
 export function getServerEnv() {
   return {
     leadWebhookUrl: process.env.LEAD_WEBHOOK_URL ?? "",
+    cmsUrl: (
+      process.env.CMS_URL ||
+      process.env.NEXT_PUBLIC_CMS_URL ||
+      "https://cms.fousventures.com"
+    ).replace(/\/$/, ""),
+    cmsSite: process.env.CMS_SITE || process.env.NEXT_PUBLIC_CMS_SITE || "clonalabs",
   };
 }

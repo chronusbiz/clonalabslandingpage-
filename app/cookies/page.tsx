@@ -13,16 +13,15 @@ export default function CookiesPage() {
         </Link>
       </p>
       <h1 className="mt-6 font-display text-4xl">Cookie policy</h1>
-      <p className="mt-4 text-muted">
-        TODO: Confirm cookie and analytics vendors with counsel. This site does not set marketing
-        cookies by default.
+      <p className="mt-4 text-sm leading-relaxed text-muted">
+        This site uses Google Analytics 4 to understand traffic and improve the product. GA may set
+        first-party analytics cookies on clonalabs.ca. Booking links may also set cookies on the
+        calendar provider domain.
       </p>
       <p className="mt-4 text-sm leading-relaxed text-muted">
-        If an analytics ID is configured, a privacy-friendly script may load. No consent box is
-        pre-checked on the lead form. Booking links may set cookies on the calendar provider’s
-        domain.
+        The lead form does not use pre-checked marketing consent checkboxes. You can block analytics
+        cookies in your browser settings. For privacy questions: {site.legal.supportEmail}.
       </p>
-      <p className="mt-4 text-sm text-muted">Contact: {site.legal.supportEmail}.</p>
     </main>
   );
 }
