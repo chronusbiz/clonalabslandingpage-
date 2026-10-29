@@ -1,0 +1,901 @@
+@import "tailwindcss";
+
+/* Manrope — single typeface for the whole site (headings + body).
+   Loaded via next/font/google. */
+
+:root {
+  --dark-primary: #000000;
+  --dark-secondary: #07070a;
+  --light-primary: #FAFAFA;
+  --light-secondary: #ffffff;
+
+  --accent: #C8102E;
+  --accent-hover: #E11D2E;
+  --accent-deep: #9B0C22;
+  --accent-light: #F87171;
+
+  --text-light: #f1f5f9;
+  --text-light-muted: #b8c5d9;
+  --text-dark: #0f172a;
+  --text-dark-muted: #404a5b;
+
+  --card-dark: #131318;
+  --card-dark-border: #23232a;
+  --card-light: #ffffff;
+  --card-light-border: #e2e8f0;
+
+  --radius-btn: 0.375rem;
+}
+
+@theme inline {
+  --color-dark-primary: var(--dark-primary);
+  --color-dark-secondary: var(--dark-secondary);
+  --color-light-primary: var(--light-primary);
+  --color-light-secondary: var(--light-secondary);
+
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-deep: var(--accent-deep);
+  --color-accent-light: var(--accent-light);
+
+  --color-text-light: var(--text-light);
+  --color-text-light-muted: var(--text-light-muted);
+  --color-text-dark: var(--text-dark);
+  --color-text-dark-muted: var(--text-dark-muted);
+
+  --color-card-dark: var(--card-dark);
+  --color-card-dark-border: var(--card-dark-border);
+  --color-card-light: var(--card-light);
+  --color-card-light-border: var(--card-light-border);
+
+  --font-heading: var(--font-manrope), "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-manrope), "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-manrope), "Manrope", ui-sans-serif, system-ui, sans-serif;
+}
+
+html[data-scroll-behavior="smooth"] {
+  scroll-behavior: smooth;
+}
+
+/* Horizontal-scroll guard lives on <html> so that descendants using
+   position: sticky still calculate their offset parent correctly. */
+html {
+  overflow-x: clip;
+}
+
+body {
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 400;
+  background: var(--dark-primary);
+  color: var(--text-light);
+}
+
+/* When the skip link jumps focus into <main>, account for the fixed
+   navbar so the focused element isn't hidden underneath it. */
+#main-content {
+  scroll-margin-top: var(--trainings-header-h, 96px);
+}
+
+.bg-dark-primary {
+  background: radial-gradient(ellipse 80% 60% at 50% 100%, #0e0e12 0%, #000000 100%);
+}
+
+.bg-dark-secondary {
+  background: radial-gradient(ellipse 70% 50% at 30% 80%, #131318 0%, #07070a 100%);
+}
+
+.bg-card-dark {
+  background: linear-gradient(145deg, #131318 0%, #08080b 100%);
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--dark-primary);
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+.animate-marquee {
+  animation: marquee 60s linear infinite;
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse 70s linear infinite;
+}
+
+/* Partners marquee — pause all rows when hovering the track area */
+.marquee-group:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* ------------------------------------------------------------------
+   Typography system — single typeface (Manrope), single refined weight.
+   One visual rhythm across hero, section headings, card titles and body.
+   Overrides any Tailwind font-weight utility applied alongside
+   `.font-heading` to keep the site visually unified.
+   ------------------------------------------------------------------ */
+.font-heading {
+  font-family: var(--font-heading);
+  font-weight: 500 !important;
+  letter-spacing: -0.02em;
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Large display / hero headings — lighter, editorial weight with
+   tighter tracking for a premium enterprise feel. */
+.font-heading.text-3xl,
+.font-heading.text-4xl,
+.font-heading.text-5xl,
+.font-heading.text-6xl,
+.font-heading.text-7xl,
+.font-heading.text-8xl,
+.font-heading.text-9xl,
+h1.font-heading,
+h2.font-heading {
+  font-weight: 400 !important;
+  letter-spacing: -0.035em;
+}
+
+
+/* Cyan accent — context-aware.
+   On dark sections we want the bright/light cyan so it pops against
+   the near-black background. On light sections that same light cyan
+   washes out and reads as a faded grey-blue. We promote to the deeper
+   brand cyan (--accent) so the headline split actually reads as cyan
+   on white surfaces. */
+.gradient-text {
+  color: var(--accent-light);
+  -webkit-text-fill-color: var(--accent-light);
+}
+
+/* When the parent section uses any of the light surface backgrounds,
+   switch to the brand cyan so headlines, eyebrow accents, and CTA
+   highlights remain clearly cyan rather than washed-out pastel. */
+.bg-light-primary .gradient-text,
+.bg-light-secondary .gradient-text,
+.bg-white .gradient-text {
+  color: var(--accent);
+  -webkit-text-fill-color: var(--accent);
+}
+
+/* Same context-aware promotion for utility classes that use the pale
+   --accent-light variable. On dark surfaces these stay bright cyan
+   (perfect contrast). On light surfaces we promote to the brand cyan
+   so eyebrows, small accents, and inline highlights remain readable
+   instead of washing out into pale grey-blue. */
+.bg-light-primary .text-accent-light,
+.bg-light-secondary .text-accent-light,
+.bg-white .text-accent-light {
+  color: var(--accent) !important;
+}
+
+.bg-light-primary .border-accent-light,
+.bg-light-secondary .border-accent-light,
+.bg-white .border-accent-light {
+  border-color: var(--accent) !important;
+}
+
+/* Headline accent underline — DISABLED site-wide.
+   The .headline-highlight class is still applied in JSX for forward
+   compatibility, but it currently renders no visual underline. The
+   highlighted phrase keeps its cyan colour via .gradient-text on its
+   own; the underline stroke was removed per design feedback.
+
+   To restore the underline, uncomment the block below. */
+.headline-highlight {
+  /* intentionally empty — class kept for JSX compatibility */
+}
+
+/*
+.headline-highlight {
+  position: relative;
+  display: inline;
+  background-image: linear-gradient(
+    to right,
+    var(--accent) 0%,
+    var(--accent-light) 55%,
+    transparent 100%
+  );
+  background-repeat: no-repeat;
+  background-size: 100% 2px;
+  background-position: 0 calc(100% + 0.32em);
+  padding-bottom: 0.45em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+*/
+
+.gradient-bg {
+  background: var(--accent);
+}
+
+/* ------------------------------------------------------------------
+   Hero CTA: animated cyan conic-gradient border ring.
+   Pure CSS, GPU-friendly. Rotates slowly behind the button so the
+   primary call-to-action quietly advertises itself without pulsing
+   or flashing. Subtle in light contexts, very visible against dark.
+   ------------------------------------------------------------------ */
+@property --cta-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.hero-cta-glow {
+  position: relative;
+}
+
+/* Soft cyan halo that sits behind the button. No mask trick — a single
+   blurred radial that intensifies on hover. Avoids the negative-inset
+   "ring gap" the conic-mask approach used to create around the edges. */
+.hero-cta-glow::before {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  border-radius: inherit;
+  background: radial-gradient(
+    closest-side,
+    color-mix(in srgb, var(--accent) 30%, transparent),
+    transparent 72%
+  );
+  filter: blur(14px);
+  opacity: 0.55;
+  transition: opacity 250ms ease-out, filter 250ms ease-out;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.hero-cta-glow:hover::before {
+  opacity: 1;
+  filter: blur(18px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-cta-glow::before {
+    transition: none;
+  }
+}
+
+.glass-effect {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Global focus-visible — consistent, visible, WCAG AA+ */
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--accent-light);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+button:focus-visible,
+a:focus-visible,
+[role="button"]:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--accent-light);
+  outline-offset: 3px;
+}
+
+/* Site-wide: subtle button corner radius (0.375rem) */
+button,
+input[type="submit"],
+input[type="button"],
+input[type="reset"] {
+  border-radius: var(--radius-btn) !important;
+}
+
+/* Subtle grain overlay for premium depth on dark sections */
+.grain-overlay {
+  position: relative;
+}
+
+.grain-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.025;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='300' height='300' filter='url(%23n)' opacity='0.5'/></svg>");
+  z-index: 1;
+}
+
+.grain-overlay > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Smooth theme for images */
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+/* Better scrollbar on dark sections */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--dark-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--card-dark-border);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Form element polish */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-text-fill-color: var(--text-dark);
+  -webkit-box-shadow: 0 0 0 1000px var(--light-primary) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ------------------------------------------------------------------
+   Prosys AI Trainings — futuristic HUD / grid atmosphere
+   ------------------------------------------------------------------ */
+
+/* Fixed chrome: trust bar (~2.5rem) + nav (5rem) */
+:root {
+  --trainings-trust-h: 2.5rem;
+  --trainings-nav-h: 5rem;
+  --trainings-header-h: calc(var(--trainings-trust-h) + var(--trainings-nav-h));
+}
+
+@media (max-width: 639px) {
+  :root {
+    /* Room for wrapped trust items on narrow screens */
+    --trainings-trust-h: 3.25rem;
+  }
+}
+
+.trainings-page-pad {
+  padding-top: var(--trainings-header-h);
+}
+
+/* Shared marquee / trust strips — one dark family */
+.trainings-strip {
+  width: 100%;
+  overflow: hidden;
+  background: #050508;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 14%, transparent);
+  position: relative;
+}
+
+.trainings-strip::before,
+.trainings-strip::after {
+  content: none;
+}
+
+.trainings-strip--marquee::before,
+.trainings-strip--marquee::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 3.5rem;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.trainings-strip--marquee::before {
+  left: 0;
+  background: linear-gradient(90deg, #050508 0%, transparent 100%);
+}
+
+.trainings-strip--marquee::after {
+  right: 0;
+  background: linear-gradient(270deg, #050508 0%, transparent 100%);
+}
+
+.trainings-strip--trust {
+  min-height: var(--trainings-trust-h);
+  display: flex;
+  align-items: center;
+  background: linear-gradient(180deg, #0a0a0e 0%, #050508 100%);
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+.trainings-strip--marquee {
+  padding-block: 0.875rem;
+  border-top: 1px solid color-mix(in srgb, var(--accent) 10%, transparent);
+}
+
+.trainings-strip-text {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--text-light) 45%, transparent);
+  white-space: nowrap;
+}
+
+@media (min-width: 640px) {
+  .trainings-strip-text {
+    font-size: 0.75rem;
+  }
+}
+
+.trainings-strip-sep {
+  color: color-mix(in srgb, var(--accent) 35%, transparent);
+  margin-inline: 1.75rem;
+}
+
+/* Section surfaces — strict light / dark tokens */
+.trainings-section {
+  width: 100%;
+  min-height: calc(100dvh - var(--trainings-header-h));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: 3rem;
+  scroll-margin-top: var(--trainings-header-h);
+  box-sizing: border-box;
+  snap-align: start;
+}
+
+@media (min-width: 1024px) {
+  .trainings-section {
+    padding-block: 4rem;
+  }
+}
+
+/* Compact band — stats / social proof stay shorter than a full screen */
+.trainings-section--compact {
+  min-height: 0;
+  padding-block: 2.5rem;
+  snap-align: none;
+}
+
+@media (min-width: 1024px) {
+  .trainings-section--compact {
+    padding-block: 3rem;
+  }
+}
+
+.trainings-section > .trainings-container,
+.trainings-section > .relative {
+  width: 100%;
+}
+
+.trainings-section--light {
+  background: var(--light-primary);
+  color: var(--text-dark);
+  border-top: 1px solid var(--card-light-border);
+  position: relative;
+}
+
+.trainings-section--light::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(200, 16, 46, 0.1) 1px, transparent 0);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse 90% 80% at 50% 40%, black 15%, transparent 75%);
+}
+
+.trainings-section--light > * {
+  position: relative;
+  z-index: 1;
+}
+
+.trainings-section--white {
+  background: var(--light-secondary);
+  color: var(--text-dark);
+  border-top: 1px solid var(--card-light-border);
+}
+
+.trainings-section--dark {
+  background: var(--dark-primary);
+  color: var(--text-light);
+  border-top: 1px solid color-mix(in srgb, var(--accent) 10%, transparent);
+  position: relative;
+  overflow: hidden;
+}
+
+.trainings-section--dark-soft {
+  background: var(--dark-secondary);
+  color: var(--text-light);
+  border-top: 1px solid color-mix(in srgb, var(--accent) 10%, transparent);
+  position: relative;
+  overflow: hidden;
+}
+
+.trainings-container {
+  width: 100%;
+  padding-inline: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .trainings-container {
+    padding-inline: 3rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .trainings-container {
+    padding-inline: 4rem;
+  }
+}
+
+.trainings-eyebrow {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.625rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.trainings-eyebrow::before {
+  content: "";
+  width: 1.25rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.55;
+}
+
+.trainings-section--dark .trainings-eyebrow,
+.trainings-section--dark-soft .trainings-eyebrow {
+  color: color-mix(in srgb, var(--accent-light) 90%, transparent);
+}
+
+.trainings-h2 {
+  font-family: var(--font-heading), "Manrope", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+  font-size: clamp(1.875rem, 4vw, 3rem);
+  margin-bottom: 1.25rem;
+  max-width: 40rem;
+}
+
+.trainings-lead {
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 36rem;
+  opacity: 0.85;
+}
+
+@media (min-width: 768px) {
+  .trainings-lead {
+    font-size: 1.0625rem;
+  }
+}
+
+.trainings-section-head {
+  margin-bottom: 2.5rem;
+}
+
+@media (min-width: 1024px) {
+  .trainings-section-head {
+    margin-bottom: 3.25rem;
+  }
+}
+
+.trainings-card-dark {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border-radius: 0.5rem;
+  transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.trainings-card-dark:hover {
+  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  background: linear-gradient(160deg, rgba(200, 16, 46, 0.1) 0%, rgba(255, 255, 255, 0.03) 100%);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(200, 16, 46, 0.08) inset;
+  transform: translateY(-2px);
+}
+
+.trainings-stat-display {
+  font-family: var(--font-heading), "Manrope", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  font-size: clamp(2.75rem, 8vw, 5.5rem);
+}
+
+.trainings-cta-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  border-radius: 0.375rem;
+  padding: 0.9rem 1.75rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  transition: background 0.25s, color 0.25s, transform 0.2s, box-shadow 0.25s;
+}
+
+.trainings-cta-primary:active {
+  transform: scale(0.98);
+}
+
+.trainings-link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  transition: gap 0.25s ease;
+}
+
+.trainings-link-arrow:hover {
+  gap: 0.75rem;
+}
+
+.trainings-grid-bg {
+  background-image:
+    linear-gradient(rgba(200, 16, 46, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200, 16, 46, 0.07) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 20%, transparent 75%);
+}
+
+.trainings-scanline {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(200, 16, 46, 0.03) 2px,
+    rgba(200, 16, 46, 0.03) 4px
+  );
+}
+
+.trainings-bracket {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-color: rgba(200, 16, 46, 0.35);
+  border-style: solid;
+  opacity: 0.6;
+}
+
+.trainings-bracket-tl {
+  top: 1.5rem;
+  left: 1.5rem;
+  border-width: 1px 0 0 1px;
+}
+
+.trainings-bracket-tr {
+  top: 1.5rem;
+  right: 1.5rem;
+  border-width: 1px 1px 0 0;
+}
+
+.trainings-bracket-bl {
+  bottom: 2rem;
+  left: 1.5rem;
+  border-width: 0 0 1px 1px;
+}
+
+.trainings-bracket-br {
+  bottom: 2rem;
+  right: 1.5rem;
+  border-width: 0 1px 1px 0;
+}
+
+.trainings-glow-text {
+  text-shadow: 0 0 40px rgba(248, 113, 113, 0.35);
+}
+
+.trainings-hud-chip {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+  backdrop-filter: blur(8px);
+  border-radius: 0.375rem;
+}
+
+.trainings-hud-panel {
+  border: 1px solid rgba(200, 16, 46, 0.25);
+  background: linear-gradient(160deg, rgba(19, 19, 24, 0.92) 0%, rgba(6, 6, 10, 0.88) 100%);
+  backdrop-filter: blur(16px);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+    0 24px 80px rgba(0, 0, 0, 0.45),
+    0 0 60px rgba(200, 16, 46, 0.08);
+}
+
+.trainings-hud-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(200, 16, 46, 0.5), transparent 40%, transparent 60%, rgba(248, 113, 113, 0.3));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.trainings-ledger {
+  border: 1px solid rgba(200, 16, 46, 0.2);
+  border-radius: 0.375rem;
+  box-shadow: 0 0 40px rgba(200, 16, 46, 0.06);
+}
+
+.trainings-stat-cell {
+  border: 1px solid var(--card-light-border);
+  background: white;
+  border-radius: 0.375rem;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.trainings-stat-cell:hover {
+  border-color: rgba(200, 16, 46, 0.35);
+  box-shadow: 0 8px 32px rgba(200, 16, 46, 0.08);
+}
+
+.trainings-role-pill {
+  padding: 0.5rem 1rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  border: 1px solid var(--card-light-border);
+  border-radius: 9999px;
+  background: var(--light-primary);
+  transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.trainings-role-pill:hover {
+  border-color: rgba(200, 16, 46, 0.45);
+  box-shadow: 0 0 20px rgba(200, 16, 46, 0.1);
+}
+
+.trainings-program-card {
+  border: 1px solid var(--card-light-border);
+  background: white;
+  border-radius: 0.5rem;
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+.trainings-program-card:hover {
+  border-color: rgba(200, 16, 46, 0.45);
+  box-shadow:
+    0 16px 48px rgba(200, 16, 46, 0.1),
+    0 0 0 1px rgba(200, 16, 46, 0.08) inset;
+  transform: translateY(-3px);
+}
+
+.trainings-program-card-v2 {
+  border: 1px solid var(--card-light-border);
+  background: white;
+  border-radius: 0.5rem;
+  transition:
+    border-color 0.3s,
+    box-shadow 0.3s,
+    transform 0.3s,
+    background 0.3s;
+}
+
+.trainings-program-card-v2:hover {
+  border-color: rgba(200, 16, 46, 0.5);
+  box-shadow:
+    0 20px 56px rgba(200, 16, 46, 0.14),
+    0 0 0 1px rgba(200, 16, 46, 0.08) inset;
+  transform: translateY(-3px);
+}
+
+.trainings-background-card {
+  border: 1px solid var(--card-light-border);
+  background: var(--light-primary);
+  border-radius: 0.375rem;
+  transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+}
+
+.trainings-background-card:hover {
+  border-color: rgba(200, 16, 46, 0.4);
+  background: white;
+  box-shadow: 0 8px 28px rgba(200, 16, 46, 0.08);
+}
+
+.course-week-row {
+  transition: background 0.25s ease;
+}
+
+.course-week-row[data-theme="dark"]:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(200, 16, 46, 0.08) 0%,
+    rgba(0, 0, 0, 0) 55%,
+    rgba(248, 113, 113, 0.05) 100%
+  );
+}
+
+.course-week-row[data-theme="light"]:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(200, 16, 46, 0.06) 0%,
+    #f8fafc 40%,
+    rgba(200, 16, 46, 0.04) 100%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
