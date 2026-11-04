@@ -50,11 +50,11 @@ function OrganizationSchema() {
           contactType: "customer service",
         },
         knowsAbout: [
-          "White-label AI chatbots",
-          "WhatsApp Business messaging",
-          "Instagram messaging",
-          "Facebook Messenger",
-          "AI customer inquiry handling",
+          "Custom software development",
+          "Practical AI systems",
+          "Web and mobile development",
+          "Product delivery",
+          "Clonvo customer conversation platform",
         ],
       }}
     />

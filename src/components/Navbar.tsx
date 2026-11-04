@@ -76,15 +76,14 @@ export default function Navbar() {
                 <span>Quick search</span>
                 <kbd className="px-1.5 py-0.5 text-[9px] font-mono border border-card-dark-border rounded bg-dark-primary/50 ml-2">⌘K / Ctrl+K</kbd>
               </button>
-              <a
+              <Link
                 href={siteConfig.bookingUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                {...linkTargetProps(siteConfig.bookingUrl)}
                 className="ml-2 group inline-flex items-center gap-2 font-semibold rounded-md transition-all duration-300 cursor-pointer bg-white text-dark-primary hover:bg-accent hover:text-white px-6 py-2.5 text-sm shadow-sm shadow-black/10 hover:shadow-md hover:shadow-accent/30 active:scale-[0.97]"
               >
                 {siteConfig.bookingLabel}
                 <ArrowUpRight size={14} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </a>
+              </Link>
             </div>
 
             <button
@@ -137,16 +136,15 @@ export default function Navbar() {
                   </Link>
                 </motion.div>
               ))}
-              <a
+              <Link
                 href={siteConfig.bookingUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                {...linkTargetProps(siteConfig.bookingUrl)}
                 onClick={() => setMobileOpen(false)}
                 className="mt-8 inline-flex items-center justify-center gap-2 font-semibold rounded-md transition-all duration-300 cursor-pointer bg-white text-dark-primary active:bg-accent active:text-white active:scale-[0.98] shadow-lg shadow-black/20 px-9 py-4 text-base tracking-wide"
               >
                 {siteConfig.bookingLabel}
                 <ArrowUpRight size={16} />
-              </a>
+              </Link>
             </div>
           </motion.div>
         )}

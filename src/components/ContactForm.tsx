@@ -89,8 +89,8 @@ export default function ContactForm() {
         <h3 className="font-heading text-2xl font-bold text-text-dark mb-3">Message received.</h3>
         <p className="text-text-dark-muted max-w-md mx-auto mb-6">
           We will reply within one business day. If you would rather not wait,{" "}
-          <a href={siteConfig.bookingUrl} target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">
-            book a 15-minute walkthrough
+          <a href={siteConfig.demoUrl} target="_blank" rel="noopener noreferrer" className="text-accent font-semibold hover:underline">
+            book a 15-minute demo
           </a>{" "}
           now.
         </p>

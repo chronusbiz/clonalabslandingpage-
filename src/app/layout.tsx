@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { manrope } from "@/lib/fonts";
+import { fontClassName } from "@/lib/fonts";
 import StructuredData from "@/components/StructuredData";
 import SiteChrome from "@/components/SiteChrome";
 import "./globals.css";
@@ -7,32 +7,32 @@ import "./globals.css";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://clonalabs.ca";
 
 const DESCRIPTION =
-  "Clonalabs runs Clonvo, the AI inbox for WhatsApp, Instagram and Messenger. Agencies sell it under their own brand — cited AI replies, human handoff, no per-seat fees, no revenue share.";
+  "ClonaLabs helps Canadian businesses improve operations, build custom digital solutions and put practical AI to work—with ready-to-deploy products and six service capability pillars.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Clonalabs | White-label AI inquiry handling for agencies",
-    template: "%s | Clonalabs",
+    default: "ClonaLabs | Technology partner for Canadian businesses",
+    template: "%s | ClonaLabs",
   },
   description: DESCRIPTION,
   keywords: [
-    "Clonalabs",
+    "ClonaLabs",
+    "Canadian technology partner",
+    "custom software development",
+    "practical AI",
+    "AI systems",
+    "web and mobile development",
     "Clonvo",
-    "white-label AI chatbot",
-    "white-label AI for agencies",
-    "WhatsApp AI inbox",
-    "Instagram DM automation",
-    "Messenger chatbot",
-    "AI inquiry handling",
-    "unified inbox",
-    "AI customer support",
-    "resell AI chatbot",
+    "ProTender",
+    "product delivery",
+    "Mississauga technology company",
+    "digital solutions Canada",
   ],
-  authors: [{ name: "Clonalabs", url: SITE_URL }],
-  creator: "Clonalabs",
-  publisher: "Clonalabs",
-  applicationName: "Clonalabs",
+  authors: [{ name: "ClonaLabs", url: SITE_URL }],
+  creator: "ClonaLabs",
+  publisher: "ClonaLabs",
+  applicationName: "ClonaLabs",
   referrer: "origin-when-cross-origin",
   formatDetection: {
     email: false,
@@ -57,35 +57,29 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_CA",
     url: "/",
-    siteName: "Clonalabs",
-    title: "Clonalabs | Sell AI inquiry handling under your own brand",
-    description:
-      "White-label Clonvo for agencies: one inbox for WhatsApp, Instagram and Messenger, cited AI replies, human handoff. No per-seat fees, no revenue share.",
-    // Explicit OG image so previewers (Slack, WhatsApp, LinkedIn,
-    // iMessage, Twitter, Facebook) reliably surface the social card.
-    // The path resolves against metadataBase, so it becomes an
-    // absolute URL like https://<host>/opengraph-image.
+    siteName: "ClonaLabs",
+    title: "ClonaLabs | Technology partner for Canadian businesses",
+    description: DESCRIPTION,
     images: [
       {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Clonalabs — White-label AI inquiry handling for agencies.",
+        alt: "ClonaLabs — Technology partner for Canadian businesses.",
         type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Clonalabs | Sell AI inquiry handling under your own brand",
-    description:
-      "White-label Clonvo for agencies: one inbox for WhatsApp, Instagram and Messenger, cited AI replies, human handoff.",
+    title: "ClonaLabs | Technology partner for Canadian businesses",
+    description: DESCRIPTION,
     images: [
       {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Clonalabs — White-label AI inquiry handling for agencies.",
+        alt: "ClonaLabs — Technology partner for Canadian businesses.",
       },
     ],
   },
@@ -119,14 +113,14 @@ export default function RootLayout({
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${manrope.variable} h-full`}
+      className={`${fontClassName} h-full`}
     >
       <head>
+        <link rel="preload" href="/fonts/Optima-Regular.woff2" as="font" type="font/woff2" crossOrigin="" />
+        <link rel="preload" href="/fonts/Optima-Bold.woff2" as="font" type="font/woff2" crossOrigin="" />
         <StructuredData />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
       </head>
-      <body className="min-h-full antialiased" suppressHydrationWarning>
+      <body className="min-h-full antialiased font-optima" suppressHydrationWarning>
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-md focus:bg-accent focus:text-white focus:text-sm focus:font-semibold"

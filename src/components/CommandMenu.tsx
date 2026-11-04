@@ -21,14 +21,15 @@ type Item = {
 
 const staticItems: Item[] = [
   { label: "Home", href: "/", group: "Navigate", icon: Home },
-  { label: "How it works", href: "/#how-it-works", group: "Navigate", icon: Workflow, description: "Agency onboarding in six steps" },
-  { label: "Pricing", href: "/#pricing", group: "Navigate", icon: CreditCard, description: "Starter, Growth, Pro and Scale" },
-  { label: "Use cases", href: "/#use-cases", group: "Navigate", icon: Building2, description: "Verticals your agency clients serve" },
-  { label: "About Clonalabs", href: "/about", group: "Navigate", icon: Building2 },
+  { label: "How we work", href: "/#how-we-work", group: "Navigate", icon: Workflow, description: "Discover through Improve in five steps" },
+  { label: "Products", href: "/#products", group: "Navigate", icon: CreditCard, description: "Clonvo, ProTender, Breaking Portal, Genesis Studio" },
+  { label: "Industries", href: "/#industries", group: "Navigate", icon: Building2, description: "Sectors we build for" },
+  { label: "Solutions", href: "/#solutions", group: "Navigate", icon: Building2, description: "Six service capability pillars" },
+  { label: "About ClonaLabs", href: "/about", group: "Navigate", icon: Building2 },
   { label: "FAQ", href: "/faq", group: "Navigate", icon: HelpCircle },
   { label: "Privacy Policy", href: "/privacy", group: "Navigate", icon: Scale },
   { label: "Contact", href: "/contact", group: "Actions", icon: Mail, description: "Start a conversation" },
-  { label: siteConfig.bookingLabel, href: siteConfig.bookingUrl, group: "Actions", icon: CalendarCheck, description: "See Clonvo and the white-label portal live" },
+  { label: siteConfig.bookingLabel, href: siteConfig.bookingUrl, group: "Actions", icon: CalendarCheck, description: "Discuss your project with our team" },
   { label: `Email ${siteConfig.email}`, href: `mailto:${siteConfig.email}`, group: "Actions", icon: Mail },
   { label: `Call ${siteConfig.phoneDisplay}`, href: `tel:${siteConfig.phone}`, group: "Actions", icon: Phone },
   { label: "Visit clonvo.chat", href: siteConfig.productUrl, group: "Actions", icon: Globe, description: "The Clonvo product site" },
@@ -61,8 +62,8 @@ export default function CommandMenu() {
   const items = useMemo<Item[]>(() => {
     const productItems: Item[] = productPillars.map((p) => ({
       label: p.title,
-      href: "/#product",
-      group: "Product",
+      href: "/#solutions",
+      group: "Services",
       icon: pillarIcons[p.icon] ?? Inbox,
       description: p.description.split(". ")[0].replace(/\.$/, ""),
     }));

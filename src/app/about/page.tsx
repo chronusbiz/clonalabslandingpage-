@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Handshake, ShieldCheck, Layers, MapPin } from "lucide-react";
+import { Handshake, ShieldCheck, Layers, MapPin, MessageSquare } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ui/ScrollReveal";
@@ -8,22 +8,21 @@ import SectionRail from "@/components/ui/SectionRail";
 import CTABanner from "@/components/ui/CTABanner";
 import { siteConfig } from "@/lib/constants";
 
-const DESCRIPTION =
-  "Clonalabs runs Clonvo, the AI inbox for WhatsApp, Instagram and Messenger, as a white-label platform for agencies. Offices in Mississauga, Canada and Lahore, Pakistan.";
+const DESCRIPTION = siteConfig.description;
 
 export const metadata: Metadata = {
   title: "About",
   description: DESCRIPTION,
   alternates: { canonical: "/about" },
   openGraph: {
-    title: "About Clonalabs",
+    title: "About ClonaLabs",
     description: DESCRIPTION,
     url: "/about",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "About Clonalabs",
+    title: "About ClonaLabs",
     description: DESCRIPTION,
   },
 };
@@ -31,21 +30,27 @@ export const metadata: Metadata = {
 const values = [
   {
     icon: Handshake,
-    title: "Agencies first",
+    title: "Business-first discovery",
     description:
-      "We built Clonalabs for agencies that want to add AI inquiry handling to what they sell. You own the client relationship, the brand and the pricing. We run the platform, with no revenue share.",
+      "We start with the workflow and the outcome—not a tool pitch. Engagements are grounded in how your business actually operates.",
   },
   {
     icon: Layers,
-    title: "One inbox, grounded answers",
+    title: "Products and services",
     description:
-      "Clonvo brings WhatsApp, Instagram and Messenger into one inbox. AI replies come from your clients' own documents and show their sources, and a human can take over at any point.",
+      "Ready platforms like Clonvo, ProTender, Breaking Portal and Genesis Studio where they fit; custom software, AI systems and delivery teams where they do not.",
+  },
+  {
+    icon: MessageSquare,
+    title: "Clear scope and communication",
+    description:
+      "Agreed boundaries, regular updates and deliverables you can review. Discover → Define → Design & Build → Launch → Improve.",
   },
   {
     icon: ShieldCheck,
-    title: "Secure by default",
+    title: "Practical delivery",
     description:
-      "Data is encrypted with AES-256 and each client runs in an isolated tenant. Clonvo uses Meta's official APIs, and a DPA and SLA are available on the Scale plan.",
+      "We describe verified capabilities only, launch with operational care, and keep improving after the first release.",
   },
 ];
 
@@ -57,11 +62,11 @@ export default function AboutPage() {
         <PageHero
           size="compact"
           badge="About"
-          title="The team behind"
-          highlight="Clonvo."
-          description="Clonalabs runs Clonvo so agencies can sell AI inquiry handling under their own brand."
+          title="Technology shaped around"
+          highlight="real business needs."
+          description="ClonaLabs is a technology partner for Canadian businesses—products and six service pillars, practical AI, and delivery hubs in Canada and Pakistan."
           primaryCta={{ label: siteConfig.bookingLabel, href: siteConfig.bookingUrl }}
-          secondaryCta={{ label: "Visit clonvo.chat", href: siteConfig.productUrl }}
+          secondaryCta={{ label: "Explore solutions", href: "/#solutions" }}
         />
 
         {/* What we do */}
@@ -70,14 +75,15 @@ export default function AboutPage() {
             <ScrollReveal>
               <SectionRail label="What we do" theme="light" />
               <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-black text-text-dark leading-[1.05] tracking-tight mb-5 max-w-3xl">
-                A white-label AI inbox, <span className="gradient-text">run for you.</span>
+                Products and services,{" "}
+                <span className="gradient-text">clearly separated.</span>
               </h2>
               <p className="max-w-2xl text-base md:text-lg text-text-dark-muted leading-relaxed mb-12">
-                Customers message businesses on WhatsApp, Instagram and Messenger at all hours. Clonvo unifies those conversations, answers from documents with citations, and hands off to people when it matters. Clonalabs operates the platform so agencies can resell it without building or hosting anything.
+                We help Canadian businesses improve operations, build custom digital solutions and put practical AI to work. When a ready product fits, we route you there; when your process needs something built for you, we scope delivery against clear milestones.
               </p>
             </ScrollReveal>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
               {values.map((v, i) => {
                 const Icon = v.icon;
                 return (
@@ -141,9 +147,9 @@ export default function AboutPage() {
         </section>
 
         <CTABanner
-          title="Ready to put your name on"
-          highlight="Clonvo?"
-          description="Book a 15-minute walkthrough and see the product and white-label portal live."
+          title="Ready to explore the"
+          highlight="right next step?"
+          description="Tell us about your goals, current systems and challenges—we will help you route to products or scoped delivery."
           buttonText={siteConfig.bookingLabel}
           buttonHref={siteConfig.bookingUrl}
           dark={false}

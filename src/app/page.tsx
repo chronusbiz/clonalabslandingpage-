@@ -12,22 +12,23 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main id="main-content">
+      <main id="main-content" className="home-fullpage">
+        {/* Dark */}
         <Hero />
-        {/* Product pillars (#product) */}
+        {/* Light */}
         <Services />
-        {/* Why Clonalabs (#about) */}
-        <About />
-        {/* Use cases / agency client verticals (#use-cases) */}
-        <Industries />
-        {/* Agency onboarding (#how-it-works) */}
-        <Approach />
-        {/* Pricing plans (#pricing) — replaces the former Insights section */}
-        <Pricing />
-        {/* Trust strip (#partners) */}
+        {/* Dark */}
         <Partners />
+        {/* Light */}
+        <Pricing />
+        {/* Dark */}
+        <Approach />
+        {/* Light */}
+        <Industries />
+        {/* Dark */}
+        <About />
+        <Footer />
       </main>
-      <Footer />
     </>
   );
 }

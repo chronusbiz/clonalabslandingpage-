@@ -2,158 +2,147 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, ShieldCheck, Handshake, Globe2 } from "lucide-react";
-import ScrollReveal from "./ui/ScrollReveal";
+import {
+  ArrowRight,
+  ShieldCheck,
+  Handshake,
+  Layers,
+  MessageSquare,
+  type LucideIcon,
+} from "lucide-react";
 import SpotlightCard from "./ui/SpotlightCard";
-import { siteConfig } from "@/lib/constants";
+import SectionHeading from "./ui/SectionHeading";
+import { siteConfig, whyChooseUs, linkTargetProps } from "@/lib/constants";
 
-const pillars = [
-  { icon: Handshake, label: "Built for agencies", desc: "You own the client relationship, the brand and the pricing. We run the platform and stay out of the way. No revenue share." },
-  { icon: ShieldCheck, label: "Secure by default", desc: "AES-256 encryption and tenant isolation, so each client's conversations and knowledge stay separate. A DPA is available on Scale." },
-  { icon: Globe2, label: "Canada + Pakistan", desc: "A Mississauga, Canada office and an engineering team in Lahore, Pakistan, with a real person to email or call." },
-];
+const pillarIcons: Record<string, LucideIcon> = {
+  Handshake,
+  Layers,
+  MessageSquare,
+  ShieldCheck,
+};
 
 const orbitTags = [
-  { label: "WhatsApp", pos: "top-[10%] left-[8%]", delay: 0 },
-  { label: "Instagram", pos: "top-[12%] right-[10%]", delay: 0.8 },
-  { label: "Citations", pos: "bottom-[18%] right-[6%]", delay: 1.6 },
-  { label: "Handoff", pos: "bottom-[10%] left-[14%]", delay: 2.4 },
-  { label: "Messenger", pos: "top-[44%] -left-2", delay: 1.2 },
-  { label: "White-label", pos: "top-[50%] -right-2", delay: 2.0 },
+  { label: "Solutions", pos: "top-[8%] left-[4%]", delay: 0 },
+  { label: "Products", pos: "top-[10%] right-[4%]", delay: 0.6 },
+  { label: "Clonvo", pos: "bottom-[12%] right-[2%]", delay: 1.2 },
+  { label: "Canada", pos: "bottom-[8%] left-[6%]", delay: 1.8 },
 ];
 
 export default function About() {
   return (
     <section
       id="about"
-      className="relative flex items-center bg-dark-secondary overflow-hidden py-20 lg:py-28 scroll-mt-20"
+      className="relative snap-start snap-always bg-dark-secondary scroll-mt-20 overflow-hidden"
     >
-      {/* Ambient background */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] rounded-full blur-3xl opacity-[0.1]" style={{ background: "radial-gradient(circle, color-mix(in srgb, var(--accent-light) 55%, transparent) 0%, transparent 70%)" }} />
-        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] rounded-full blur-3xl opacity-[0.08]" style={{ background: "radial-gradient(circle, color-mix(in srgb, var(--accent) 65%, transparent) 0%, transparent 70%)" }} />
+        <div
+          className="absolute top-0 left-1/4 w-[480px] h-[480px] rounded-full blur-3xl opacity-[0.1]"
+          style={{
+            background:
+              "radial-gradient(circle, color-mix(in srgb, var(--accent-light) 55%, transparent) 0%, transparent 70%)",
+          }}
+        />
       </div>
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12 w-full">
-        {/* Editorial rail */}
-        <div className="flex items-center gap-3 mb-6 lg:mb-8">
-          <span className="text-[10px] text-accent-light/60 uppercase tracking-[0.35em] font-semibold">/ Why Clonalabs</span>
-          <span className="h-px flex-1 max-w-[120px] bg-gradient-to-r from-accent-light/40 to-transparent" />
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-          {/* Left column — copy */}
-          <ScrollReveal className="lg:col-span-7">
-            <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl xl:text-[4.5rem] font-black text-white mb-6 leading-[1.02] tracking-tight">
-              Your brand.{" "}
-              <br />
-              <span className="gradient-text">Our platform.</span>
-            </h2>
-
-            <p className="text-base md:text-lg text-text-light-muted leading-relaxed mb-5 max-w-2xl">
-              Clonalabs is the team behind {siteConfig.productName}, the AI inbox for
-              WhatsApp, Instagram and Messenger. We built it so agencies can offer
-              AI inquiry handling to clients without building, hosting or supporting
-              it themselves.
-            </p>
-            <p className="text-sm md:text-base text-text-light-muted/80 leading-relaxed mb-8 max-w-2xl">
-              You sell it under your name and set your own price. We keep the platform
-              running, secure and up to date. There are no per-seat fees and no revenue
-              share, so every dollar above the plan price is your margin.
-            </p>
-
-            {/* Three pillars */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
-              {pillars.map((p) => {
-                const Icon = p.icon;
-                return (
-                  <SpotlightCard
-                    key={p.label}
-                    variant="dark"
-                    className="group p-4 bg-card-dark/50 border border-card-dark-border hover:border-accent/40 transition-colors"
-                  >
-                    <div className="w-9 h-9 rounded-md bg-accent/10 border border-accent/20 flex items-center justify-center text-accent-light mb-3 group-hover:bg-accent group-hover:text-white transition-colors">
-                      <Icon size={15} />
-                    </div>
-                    <div className="font-heading text-sm font-bold text-white mb-1">{p.label}</div>
-                    <div className="text-[11px] text-text-light-muted/80 leading-snug">{p.desc}</div>
-                  </SpotlightCard>
-                );
-              })}
-            </div>
-
-            {/* CTAs */}
+      <div className="fp-inner relative z-10">
+        <SectionHeading
+          compact
+          theme="dark"
+          eyebrow="Why ClonaLabs"
+          title={
+            <>
+              Technology shaped around{" "}
+              <span className="gradient-text">real business needs.</span>
+            </>
+          }
+          description="Products like Clonvo where they fit, scoped delivery when you need something built for your workflow."
+          aside={
             <div className="flex flex-wrap items-center gap-3">
               <Link
                 href="/about"
-                className="group inline-flex items-center gap-2 font-semibold rounded-md bg-white text-dark-primary hover:bg-accent hover:text-white px-6 py-3.5 text-xs uppercase tracking-widest transition-all duration-300"
+                className="fp-btn group inline-flex items-center gap-2 font-semibold rounded-md bg-white text-dark-primary uppercase tracking-widest transition-all duration-300 hover:bg-accent hover:text-white"
               >
-                About Clonalabs
-                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                About ClonaLabs
+                <ArrowRight size={13} className="group-hover:translate-x-0.5 transition-transform" />
               </Link>
-              <a
+              <Link
                 href={siteConfig.bookingUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 font-medium rounded-md border border-white/20 text-white hover:border-white/60 hover:bg-white/5 px-6 py-3.5 text-xs uppercase tracking-widest transition-all duration-300"
+                {...linkTargetProps(siteConfig.bookingUrl)}
+                className="fp-btn inline-flex items-center gap-2 font-medium rounded-md border border-white/20 text-white uppercase tracking-widest transition-all duration-300 hover:border-white/55 hover:bg-white/5"
               >
-                Book a walkthrough
-              </a>
+                {siteConfig.bookingLabel}
+              </Link>
             </div>
-          </ScrollReveal>
+          }
+        />
 
-          {/* Right column — visual */}
-          <ScrollReveal delay={0.2} direction="right" className="lg:col-span-5">
-            <div className="relative aspect-square max-w-[520px] mx-auto">
-              {/* Rotating rings */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 grid-rows-[minmax(0,1fr)] gap-6 lg:gap-10 fp-fill">
+          <div className="lg:col-span-7 grid grid-cols-2 grid-rows-[minmax(0,1fr)_minmax(0,1fr)] gap-4 min-h-0">
+            {whyChooseUs.map((p, i) => {
+              const Icon = pillarIcons[p.icon] ?? Handshake;
+              return (
+                <SpotlightCard
+                  key={p.label}
+                  variant="dark"
+                  className="fp-card group relative border border-card-dark-border bg-card-dark/55 overflow-hidden transition-all duration-300 hover:border-accent/45 hover:bg-card-dark"
+                >
+                  <span className="absolute top-0 inset-x-0 h-[2px] bg-accent origin-left scale-x-0 transition-transform duration-500 group-hover:scale-x-100" />
+                  <div className="flex flex-col h-full" style={{ padding: "var(--fp-card-pad)" }}>
+                    <div className="flex items-center justify-between mb-auto">
+                      <div className="w-11 h-11 border border-accent/25 bg-accent/10 flex items-center justify-center text-accent-light transition-colors group-hover:bg-accent group-hover:text-white group-hover:border-accent">
+                        <Icon size={17} />
+                      </div>
+                      <span className="font-heading text-3xl text-white/10 leading-none tabular-nums">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                    </div>
+                    <div className="pt-3">
+                      <h3 className="fp-card-title font-heading font-bold text-white mb-1 leading-tight">{p.label}</h3>
+                      <p className="fp-body text-text-light-muted/85 leading-snug line-clamp-2">{p.desc}</p>
+                    </div>
+                  </div>
+                </SpotlightCard>
+              );
+            })}
+          </div>
+
+          <div className="lg:col-span-5 hidden lg:block relative min-h-0">
+            <div className="absolute inset-0 flex items-center justify-center">
+            <div className="relative aspect-square h-[min(44vh,420px)] max-w-full">
               <div className="absolute inset-0 rounded-full border border-accent/10 animate-[spin_40s_linear_infinite]" />
-              <div className="absolute inset-10 rounded-full border border-accent/15 animate-[spin_30s_linear_infinite_reverse]" />
-              <div className="absolute inset-20 rounded-full border border-accent/20 animate-[spin_22s_linear_infinite]" />
-              <div className="absolute inset-28 rounded-full border border-dashed border-accent/25" />
+              <div className="absolute inset-[12%] rounded-full border border-accent/15 animate-[spin_30s_linear_infinite_reverse]" />
+              <div className="absolute inset-[24%] rounded-full border border-accent/20" />
+              <div className="absolute inset-[36%] rounded-full bg-accent/5 blur-2xl" />
 
-              {/* Center emblem */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-40 h-40 gradient-bg rotate-45 opacity-20 blur-xl" />
                 <div
-                  className="absolute w-28 h-28 lg:w-32 lg:h-32 gradient-bg rotate-45 flex items-center justify-center"
+                  className="w-[28%] aspect-square gradient-bg rotate-45 flex items-center justify-center"
                   style={{ boxShadow: "0 0 60px color-mix(in srgb, var(--accent) 45%, transparent)" }}
                 >
                   <div className="-rotate-45 text-center">
-                    <div className="font-heading text-2xl lg:text-3xl font-black text-white leading-none tracking-tighter">CLONA</div>
-                    <div className="text-[9px] text-white/80 uppercase tracking-[0.3em] mt-1 font-semibold">Labs</div>
+                    <div className="font-heading font-bold text-base text-white leading-none">CLONA</div>
+                    <div className="text-[10px] uppercase text-white/80 mt-1 tracking-[0.3em]">Labs</div>
                   </div>
                 </div>
               </div>
 
-              {/* Orbital dots */}
-              <motion.div
-                className="absolute top-[22%] right-[18%] w-2.5 h-2.5 rounded-full bg-accent"
-                style={{ boxShadow: "0 0 12px color-mix(in srgb, var(--accent-light) 80%, transparent)" }}
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 3, repeat: Infinity }}
-              />
-              <motion.div
-                className="absolute bottom-[26%] left-[18%] w-2 h-2 rounded-full bg-accent-light"
-                style={{ boxShadow: "0 0 10px color-mix(in srgb, var(--accent-hover) 70%, transparent)" }}
-                animate={{ y: [0, 8, 0] }}
-                transition={{ duration: 2.5, repeat: Infinity, delay: 0.5 }}
-              />
-
-              {/* Orbit tags */}
               {orbitTags.map((t) => (
                 <motion.div
                   key={t.label}
-                  className={`absolute ${t.pos} px-2.5 py-1 rounded-md bg-card-dark/90 backdrop-blur-sm border border-card-dark-border shadow-lg`}
-                  initial={{ opacity: 0, scale: 0.8 }}
+                  className={`absolute ${t.pos} px-3 py-1.5 border border-card-dark-border bg-card-dark/90 backdrop-blur-sm`}
+                  initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ delay: t.delay * 0.15 + 0.3, duration: 0.5 }}
+                  transition={{ delay: t.delay * 0.1, duration: 0.4 }}
                 >
-                  <span className="text-[10px] text-accent-light font-semibold tracking-wider uppercase">{t.label}</span>
+                  <span className="text-[11px] uppercase tracking-[0.18em] font-semibold text-accent-light">
+                    {t.label}
+                  </span>
                 </motion.div>
               ))}
             </div>
-          </ScrollReveal>
+            </div>
+          </div>
         </div>
       </div>
     </section>

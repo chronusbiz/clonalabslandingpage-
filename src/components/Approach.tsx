@@ -1,359 +1,157 @@
 "use client";
 
 import {
-  CalendarCheck,
-  Palette,
-  Plug,
-  BookOpenCheck,
-  UserRoundCheck,
+  Search,
+  ClipboardList,
+  PencilRuler,
   Rocket,
-  CheckCircle2,
-  Users,
-  Sparkles,
-  ArrowRight,
+  RefreshCw,
   ArrowUpRight,
+  ArrowRight,
+  Check,
+  Users,
+  type LucideIcon,
 } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { approach, siteConfig } from "@/lib/constants";
-import ScrollReveal from "./ui/ScrollReveal";
+import { approach, approachStepMeta, siteConfig, linkTargetProps } from "@/lib/constants";
+import SectionHeading from "./ui/SectionHeading";
 
-const stepMeta = [
-  {
-    icon: CalendarCheck,
-    tagline: "See it live, pick your plans",
-    owner: "You + Clonalabs",
-    deliverables: [
-      "Live Clonvo walkthrough",
-      "Plan tiers matched to your clients",
-      "Clear resell-and-margin picture",
-    ],
-  },
-  {
-    icon: Palette,
-    tagline: "Put your name on it",
-    owner: "Clonalabs sets up",
-    deliverables: [
-      "White-label portal with your brand",
-      "Clients see you, not us",
-      "Platform run and updated by Clonalabs",
-    ],
-  },
-  {
-    icon: Plug,
-    tagline: "One inbox for every channel",
-    owner: "You + Clonalabs",
-    deliverables: [
-      "WhatsApp, Instagram and Messenger",
-      "Connected via Meta's official APIs",
-      "Unified inbox and ops dashboard",
-    ],
-  },
-  {
-    icon: BookOpenCheck,
-    tagline: "Teach it the client's business",
-    owner: "You",
-    deliverables: [
-      "Upload docs, FAQs and policies",
-      "Answers grounded in that knowledge",
-      "A citation on every reply",
-    ],
-  },
-  {
-    icon: UserRoundCheck,
-    tagline: "Decide when a human steps in",
-    owner: "You",
-    deliverables: [
-      "Handoff rules per client",
-      "Full conversation context passed on",
-      "Nothing for the customer to repeat",
-    ],
-  },
-  {
-    icon: Rocket,
-    tagline: "Turn it on and bill your way",
-    owner: "You",
-    deliverables: [
-      "Monitor results in the ops dashboard",
-      "Charge clients your own price",
-      "No per-seat fees, no revenue share",
-    ],
-  },
-];
+const stepIconMap: Record<string, LucideIcon> = {
+  Search,
+  ClipboardList,
+  PencilRuler,
+  Rocket,
+  RefreshCw,
+};
 
 export default function Approach() {
   return (
     <section
-      id="how-it-works"
-      className="relative bg-dark-primary overflow-hidden py-14 lg:py-20 scroll-mt-20"
+      id="how-we-work"
+      className="relative snap-start snap-always bg-dark-primary scroll-mt-20 overflow-hidden"
     >
-      {/* Decorative layer */}
       <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
         <div
-          className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] opacity-50 animate-pulse-glow"
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[420px] opacity-35"
           style={{
             background:
-              "radial-gradient(ellipse at center top, color-mix(in srgb, var(--accent) 50%, transparent) 0%, transparent 70%)",
+              "radial-gradient(ellipse at center top, color-mix(in srgb, var(--accent) 40%, transparent) 0%, transparent 70%)",
           }}
         />
         <div
-          className="absolute bottom-0 right-0 w-[520px] h-[520px] rounded-full blur-[140px] opacity-40"
+          className="absolute inset-0 opacity-[0.035]"
           style={{
-            background:
-              "radial-gradient(circle, color-mix(in srgb, var(--accent-light) 20%, transparent) 0%, transparent 70%)",
-          }}
-        />
-        <div
-          className="absolute top-1/3 -left-32 w-[480px] h-[480px] rounded-full blur-[140px] opacity-40"
-          style={{
-            background:
-              "radial-gradient(circle, color-mix(in srgb, var(--accent) 35%, transparent) 0%, transparent 65%)",
+            backgroundImage:
+              "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)",
+            backgroundSize: "64px 64px",
+            maskImage: "radial-gradient(ellipse 80% 60% at 50% 40%, black, transparent)",
           }}
         />
       </div>
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12 xl:px-16 w-full">
-        {/* ── Editorial header ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-12 lg:mb-16 items-end">
-          <ScrollReveal className="lg:col-span-7">
-            <div className="flex items-center gap-3 mb-5">
-              <span className="font-mono text-[10px] text-white/30 tracking-[0.25em] uppercase">
-                / Agency onboarding
-              </span>
-              <span className="h-px flex-1 bg-gradient-to-r from-white/20 to-transparent max-w-[160px]" />
-            </div>
+      <div className="fp-inner relative z-10">
+        <SectionHeading
+          compact
+          theme="dark"
+          eyebrow="How we work"
+          title={
+            <>
+              From challenge to{" "}
+              <span className="gradient-text">working solution.</span>
+            </>
+          }
+          description="Discover → Define → Design & Build → Launch → Improve — one clear delivery spine."
+          aside={
+            <Link
+              href={siteConfig.bookingUrl}
+              {...linkTargetProps(siteConfig.bookingUrl)}
+              className="fp-btn group inline-flex items-center gap-2 rounded-md bg-white text-dark-primary font-semibold uppercase tracking-widest transition-all duration-300 hover:bg-accent hover:text-white"
+            >
+              Start a discovery
+              <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </Link>
+          }
+        />
 
-            <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] xl:text-[5rem] font-black text-white leading-[0.98] tracking-tight mb-5">
-              How it{" "}
-              <span className="headline-highlight gradient-text">works</span>
-              .
-            </h2>
-
-            <p className="text-base md:text-lg text-text-light-muted leading-relaxed max-w-2xl">
-              From first call to first billed client in six steps. Clonvo goes
-              live in about three of them, and Clonalabs runs the platform from
-              there so you can focus on selling.
-            </p>
-          </ScrollReveal>
-
-          {/* Mini-summary card */}
-          <ScrollReveal className="lg:col-span-5" delay={0.1}>
-            <div className="relative p-5 lg:p-6 border border-card-dark-border bg-gradient-to-br from-card-dark/80 to-dark-secondary/60 backdrop-blur-sm overflow-hidden">
-              <div
-                className="absolute top-0 right-0 w-48 h-48 rounded-full blur-3xl opacity-30"
-                style={{ background: "radial-gradient(circle, color-mix(in srgb, var(--accent-light) 45%, transparent) 0%, transparent 70%)" }}
-                aria-hidden="true"
-              />
-              <div className="relative">
-                <p className="text-[10px] uppercase tracking-[0.25em] text-accent-light/80 font-semibold mb-3">
-                  Onboarding at a glance
-                </p>
-                <div className="grid grid-cols-3 gap-4">
-                  <div>
-                    <p className="font-heading text-2xl lg:text-3xl font-black text-white leading-none tracking-tight mb-1.5">
-                      15
-                    </p>
-                    <p className="text-[10px] text-white/50 uppercase tracking-widest font-semibold">
-                      Min walkthrough
-                    </p>
-                  </div>
-                  <div className="pl-4 border-l border-white/10">
-                    <p className="font-heading text-2xl lg:text-3xl font-black text-white leading-none tracking-tight mb-1.5">
-                      ~3
-                    </p>
-                    <p className="text-[10px] text-white/50 uppercase tracking-widest font-semibold">
-                      Steps to live
-                    </p>
-                  </div>
-                  <div className="pl-4 border-l border-white/10">
-                    <p className="font-heading text-2xl lg:text-3xl font-black text-white leading-none tracking-tight mb-1.5">
-                      $0
-                    </p>
-                    <p className="text-[10px] text-white/50 uppercase tracking-widest font-semibold">
-                      Revenue share
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </ScrollReveal>
-        </div>
-
-        {/* ── Phase cards ── */}
-        <div className="relative">
-          {/* Horizontal connector with animated progress */}
+        <div className="relative fp-fill">
           <div
-            aria-hidden="true"
-            className="hidden lg:block absolute top-[3.25rem] left-[4%] right-[4%] z-0"
-          >
-            <div className="relative h-px">
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-              <motion.div
-                initial={{ scaleX: 0 }}
-                whileInView={{ scaleX: 1 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 1.4, ease: "easeOut" }}
-                className="absolute inset-0 bg-gradient-to-r from-accent via-accent-light to-accent origin-left"
-                style={{ boxShadow: "0 0 12px color-mix(in srgb, var(--accent-light) 60%, transparent)" }}
-              />
-            </div>
-          </div>
+            aria-hidden
+            className="hidden xl:block absolute z-0 left-[10%] right-[10%] h-px bg-gradient-to-r from-accent/10 via-accent/50 to-accent/10"
+            style={{ top: "calc(var(--fp-card-pad) + 1.375rem + 1px)" }}
+          />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 relative z-10">
+          <div className="relative z-10 grid grid-cols-5 grid-rows-[minmax(0,1fr)] gap-3 h-full max-xl:grid-cols-2 max-xl:grid-rows-none max-md:grid-cols-1">
             {approach.map((item, i) => {
-              const meta = stepMeta[i];
-              const Icon = meta.icon;
+              const meta = approachStepMeta[i];
+              if (!meta) return null;
+              const Icon = stepIconMap[meta.icon] ?? Search;
+              const isLast = i === approach.length - 1;
               return (
-                <motion.div
+                <motion.article
                   key={item.step}
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 14 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
-                  transition={{ delay: i * 0.1, duration: 0.55 }}
-                  className="group relative"
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.07, duration: 0.45 }}
+                  className="group relative flex flex-col min-h-0 overflow-hidden border border-card-dark-border bg-gradient-to-b from-card-dark/95 to-card-dark/50 transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:shadow-[0_28px_56px_-28px_color-mix(in_srgb,var(--accent)_50%,transparent)]"
+                  style={{ padding: "var(--fp-card-pad)" }}
                 >
-                  {/* Subtle ambient glow on hover */}
-                  <div
-                    className="absolute -inset-1 bg-gradient-to-br from-accent/20 to-accent/0 opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-700 pointer-events-none"
-                    aria-hidden="true"
-                  />
+                  <span className="absolute top-0 inset-x-0 h-[2px] bg-accent origin-left scale-x-0 transition-transform duration-500 group-hover:scale-x-100" />
 
-                  <div className="relative h-full border border-card-dark-border bg-card-dark/80 backdrop-blur-sm overflow-hidden group-hover:border-accent/40 transition-all duration-500">
-                    {/* Top gradient bar */}
-                    <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-accent via-accent-light to-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left" />
-
-                    {/* Step node */}
-                    <div className="relative flex items-center justify-center pt-5">
-                      <div className="relative w-14 h-14">
-                        <div
-                          className="absolute inset-0 border border-accent/30 group-hover:border-accent/70 transition-colors duration-500"
-                          style={{ transform: "rotate(45deg)" }}
-                        />
-                        <div className="absolute inset-[5px] bg-gradient-to-br from-dark-primary via-card-dark to-dark-primary border border-card-dark-border group-hover:from-accent/20 group-hover:via-card-dark group-hover:to-dark-primary transition-all duration-500 flex items-center justify-center">
-                          <Icon
-                            size={20}
-                            strokeWidth={1.7}
-                            className="text-accent-light group-hover:scale-110 transition-transform duration-500"
-                          />
-                        </div>
-                        <div className="absolute inset-0 border border-accent/60 opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-all duration-700" />
-                      </div>
+                  <div className="relative flex items-center justify-between mb-3">
+                    <div className="relative w-11 h-11 shrink-0 flex items-center justify-center border border-accent/40 bg-dark-primary text-accent-light transition-all duration-300 group-hover:bg-accent group-hover:border-accent group-hover:text-white group-hover:shadow-[0_0_24px_color-mix(in_srgb,var(--accent)_60%,transparent)]">
+                      <Icon size={18} strokeWidth={1.8} />
                     </div>
+                    {!isLast && (
+                      <ArrowRight
+                        size={14}
+                        aria-hidden
+                        className="hidden xl:block text-white/15 transition-all duration-300 group-hover:text-accent-light group-hover:translate-x-1"
+                      />
+                    )}
+                    <span className="font-heading font-bold text-[2.5rem] leading-none tabular-nums text-white/[0.07] transition-colors duration-300 group-hover:text-accent/30">
+                      {item.step}
+                    </span>
+                  </div>
 
-                    {/* Phase number + marker */}
-                    <div className="flex items-center justify-between px-6 pt-4 pb-2">
-                      <span className="font-mono text-[9px] text-white/40 tracking-[0.25em] uppercase">
-                        Step · {item.step}
-                      </span>
-                      <span className="font-heading text-[10px] text-accent-light/50 tracking-widest uppercase font-bold">
-                        {i + 1} of {approach.length}
-                      </span>
-                    </div>
+                  <h3 className="fp-card-title font-heading font-bold text-white leading-tight mb-1">
+                    {item.title}
+                  </h3>
+                  <p className="text-[11px] uppercase tracking-[0.16em] font-semibold text-accent-light leading-snug min-h-[2.5em] mb-2">
+                    {meta.tagline}
+                  </p>
 
-                    <div className="px-6 pb-6">
-                      {/* Big number watermark */}
-                      <div className="relative mb-3">
-                        <span
-                          className="absolute -top-2 right-0 font-heading text-6xl font-black text-white/[0.04] group-hover:text-accent/15 leading-none transition-colors duration-500 pointer-events-none"
-                          aria-hidden="true"
-                        >
-                          {item.step}
+                  <p className="fp-body text-text-light-muted leading-relaxed min-h-0 overflow-hidden [@media(max-height:700px)]:line-clamp-4">
+                    {item.description}
+                  </p>
+
+                  <div className="mt-auto pt-3 shrink-0">
+                    <div className="border border-white/[0.08] bg-white/[0.025] p-3 transition-colors duration-300 group-hover:border-accent/25 group-hover:bg-accent/[0.06]">
+                      <div className="flex items-center justify-between gap-2 mb-2 pb-2 border-b border-white/[0.06]">
+                        <p className="text-[10px] uppercase tracking-[0.2em] font-semibold text-white/40">
+                          Deliverables
+                        </p>
+                        <span className="inline-flex items-center gap-1 text-[10.5px] text-white/55 whitespace-nowrap">
+                          <Users size={10} className="text-accent-light" />
+                          {meta.owner}
                         </span>
-                        <p className="relative text-[10px] uppercase tracking-[0.22em] text-accent-light font-bold mb-2">
-                          {meta.tagline}
-                        </p>
-                        <h3 className="relative font-heading text-lg lg:text-xl font-bold text-white tracking-tight leading-tight">
-                          {item.title}
-                        </h3>
                       </div>
-
-                      <p className="text-text-light-muted text-[13px] leading-relaxed mb-5">
-                        {item.description}
-                      </p>
-
-                      {/* Deliverables */}
-                      <div className="pt-4 border-t border-white/10">
-                        <p className="text-[9px] uppercase tracking-[0.25em] text-white/40 font-bold mb-3">
-                          What you get
-                        </p>
-                        <ul className="space-y-2 mb-4">
-                          {meta.deliverables.map((d) => (
-                            <li
-                              key={d}
-                              className="flex items-start gap-2 text-[12px] text-text-light-muted leading-snug"
-                            >
-                              <CheckCircle2
-                                size={11}
-                                className="text-accent-light mt-[3px] flex-shrink-0"
-                                strokeWidth={2.4}
-                              />
-                              <span>{d}</span>
-                            </li>
-                          ))}
-                        </ul>
-
-                        <div className="flex items-center justify-between">
-                          <div className="inline-flex items-center gap-1.5 px-2 py-1 rounded-md bg-white/5 border border-white/10 text-[10px] text-white/70">
-                            <Users size={10} className="text-accent-light" />
-                            <span className="tracking-wide font-medium">
-                              {meta.owner}
-                            </span>
-                          </div>
-                          {i < approach.length - 1 && (
-                            <ArrowRight
-                              size={14}
-                              className="text-white/20 group-hover:text-accent-light group-hover:translate-x-1 transition-all duration-500"
-                            />
-                          )}
-                        </div>
-                      </div>
+                      <ul className="space-y-1">
+                        {meta.deliverables.map((d) => (
+                          <li key={d} className="flex items-start gap-2 text-[12px] text-white/85 leading-snug">
+                            <Check size={11} className="mt-[3px] shrink-0 text-accent-light" strokeWidth={3} />
+                            <span>{d}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
-                </motion.div>
+                </motion.article>
               );
             })}
           </div>
         </div>
-
-        {/* Bottom CTA strip */}
-        <ScrollReveal delay={0.3}>
-          <div className="mt-12 lg:mt-14 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 p-5 lg:p-6 border border-card-dark-border bg-card-dark/60 backdrop-blur-sm">
-            <div className="flex items-center gap-4">
-              <div className="relative w-11 h-11 bg-accent/10 border border-accent/20 flex items-center justify-center flex-shrink-0">
-                <Sparkles size={16} className="text-accent-light" />
-                <div className="absolute inset-0 bg-accent/20 blur-xl opacity-60 -z-10" />
-              </div>
-              <div>
-                <p className="font-heading text-base lg:text-lg font-bold text-white leading-tight">
-                  Want to see the flow end to end?
-                </p>
-                <p className="text-[13px] text-text-light-muted mt-0.5">
-                  A 15-minute walkthrough covers the product, branding and pricing.
-                </p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3 flex-wrap">
-              <a
-                href={siteConfig.bookingUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 px-5 py-3 rounded-md bg-white text-dark-primary hover:bg-accent hover:text-white transition-colors font-semibold text-xs uppercase tracking-widest whitespace-nowrap"
-              >
-                {siteConfig.bookingLabel}
-                <ArrowUpRight
-                  size={13}
-                  className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
-                />
-              </a>
-              <Link
-                href="/#pricing"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-md border border-white/20 text-white hover:border-white/50 hover:bg-white/5 transition-colors font-medium text-xs uppercase tracking-widest whitespace-nowrap"
-              >
-                See pricing
-              </Link>
-            </div>
-          </div>
-        </ScrollReveal>
       </div>
     </section>
   );

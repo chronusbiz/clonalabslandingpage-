@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { siteConfig } from "@/lib/constants";
+import { siteConfig, linkTargetProps } from "@/lib/constants";
 
 export default function StickyCTA() {
   const [visible, setVisible] = useState(false);
@@ -28,15 +29,14 @@ export default function StickyCTA() {
           transition={{ duration: 0.3 }}
           className="fixed bottom-6 right-6 z-40 hidden sm:block"
         >
-          <a
+          <Link
             href={siteConfig.bookingUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            {...linkTargetProps(siteConfig.bookingUrl)}
             className="group flex items-center gap-2 bg-white text-dark-primary hover:bg-accent hover:text-white px-5 py-3 rounded-md font-semibold text-xs uppercase tracking-widest shadow-xl shadow-black/20 transition-all duration-300"
           >
             {siteConfig.bookingLabel}
             <ArrowUpRight size={13} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </a>
+          </Link>
         </motion.div>
       )}
     </AnimatePresence>

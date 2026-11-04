@@ -1,14 +1,18 @@
 "use client";
 
-import Link from "next/link";
 import {
-  Wrench, HeartPulse, ShoppingBag, Building2, Scale, Megaphone, ArrowRight, ArrowUpRight,
+  Wrench,
+  HeartPulse,
+  ShoppingBag,
+  Building2,
+  Scale,
+  Megaphone,
+  ArrowRight,
+  ArrowUpRight,
   type LucideIcon,
 } from "lucide-react";
-import ScrollReveal from "./ui/ScrollReveal";
 import SpotlightCard from "./ui/SpotlightCard";
 import SectionHeading from "./ui/SectionHeading";
-import SectionRail from "./ui/SectionRail";
 import { siteConfig, useCases } from "@/lib/constants";
 
 const iconMap: Record<string, LucideIcon> = {
@@ -22,150 +26,94 @@ const iconMap: Record<string, LucideIcon> = {
 
 export default function Industries() {
   return (
-    <section id="use-cases" className="py-14 lg:py-20 bg-light-secondary relative overflow-hidden scroll-mt-20">
+    <section
+      id="industries"
+      className="snap-start snap-always bg-light-secondary relative scroll-mt-20 overflow-hidden"
+    >
       <div
-        className="absolute inset-0 pointer-events-none opacity-60"
-        style={{ background: "radial-gradient(ellipse 900px 500px at 50% 0%, color-mix(in srgb, var(--accent) 5%, transparent) 0%, transparent 65%)" }}
+        className="absolute inset-0 pointer-events-none opacity-50"
+        style={{
+          background:
+            "radial-gradient(ellipse 900px 500px at 50% 0%, color-mix(in srgb, var(--accent) 5%, transparent) 0%, transparent 65%)",
+        }}
       />
 
-      <div className="relative max-w-[1400px] mx-auto px-6 lg:px-8">
+      <div className="fp-inner relative">
         <SectionHeading
-          eyebrow="Use cases"
+          compact
+          eyebrow="Industries"
           title={
             <>
-              Built for the clients <br className="hidden md:inline" />
-              <span className="gradient-text">agencies actually serve.</span>
+              Technology shaped around{" "}
+              <span className="gradient-text">your industry.</span>
             </>
           }
-          description="Home services, clinics, ecommerce, real estate, professional services, and agencies themselves. Wherever customers message a business on WhatsApp, Instagram or Messenger, there is an inbox to unify and inquiries to answer."
+          description="Sectors where we can show a relevant use case—services, healthcare, retail, property, field work, and agencies."
           aside={
             <a
               href={siteConfig.bookingUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 px-6 py-3 border border-text-dark/10 text-text-dark text-sm font-medium transition-all duration-300 hover:border-accent hover:text-accent hover:bg-accent/5 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]"
+              className="fp-btn group inline-flex items-center gap-2 border border-text-dark/10 text-text-dark font-medium transition-all duration-300 hover:border-accent hover:text-accent hover:bg-accent/5"
             >
-              Talk through your clients
-              <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
+              Discuss your industry
+              <ArrowRight size={13} className="transition-transform group-hover:translate-x-0.5" />
             </a>
           }
         />
 
-        {/* Use-case grid — separated cards with image headers + hover lift */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+        <div className="fp-grid fp-grid-3 fp-fill">
           {useCases.map((item, i) => {
             const Icon = iconMap[item.icon] ?? Megaphone;
             return (
-              <ScrollReveal key={item.title} delay={i * 0.06}>
-                <SpotlightCard
-                  variant="light"
-                  className="group h-full border border-card-light-border bg-white overflow-hidden shadow-[0_1px_3px_rgba(15,23,42,0.05)] transition-all duration-500 ease-out hover:-translate-y-2 hover:border-accent/40 hover:shadow-[0_28px_55px_-22px_color-mix(in_srgb,var(--accent)_45%,transparent)]"
-                >
-                  <div className="flex flex-col h-full">
-                    {/* Image header */}
-                    <div className="relative h-44 overflow-hidden bg-dark-primary [transform:translateZ(0)]">
-                      <div
-                        className="absolute inset-0 bg-cover bg-center transition-transform duration-[900ms] ease-out group-hover:scale-[1.12]"
-                        style={{ backgroundImage: `url(${item.image})` }}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-dark-primary via-dark-primary/70 to-dark-primary/25" />
-                      <div className="absolute inset-0 bg-gradient-to-br from-accent/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-
-                      {/* Floating icon */}
-                      <div className="absolute top-5 left-5 w-12 h-12 bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white group-hover:bg-accent group-hover:border-accent group-hover:scale-110 transition-all duration-500">
-                        <Icon size={20} />
-                      </div>
-
-                      {/* Metric overlay at bottom */}
-                      <div className="absolute bottom-4 left-5 right-5">
-                        <p className="font-heading text-2xl font-black text-white leading-none mb-0.5 tracking-tight">
-                          {item.metric.value}
-                        </p>
-                        <p className="text-[10px] text-white/60 uppercase tracking-widest leading-snug">
-                          {item.metric.label}
-                        </p>
-                      </div>
+              <SpotlightCard
+                key={item.title}
+                variant="light"
+                className="fp-card group border border-card-light-border bg-white overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:border-accent/40 hover:shadow-[0_20px_40px_-26px_rgba(15,23,42,0.4)]"
+              >
+                <div className="flex h-full min-h-0">
+                  <div className="relative w-[38%] shrink-0 overflow-hidden bg-dark-primary">
+                    <div
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                      style={{ backgroundImage: `url(${item.image})` }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark-primary/90 via-dark-primary/40 to-dark-primary/10" />
+                    <div className="absolute top-3 left-3 w-9 h-9 bg-white/10 backdrop-blur-sm border border-white/25 flex items-center justify-center text-white transition-colors group-hover:bg-accent group-hover:border-accent">
+                      <Icon size={15} />
                     </div>
-
-                    {/* Content */}
-                    <div className="p-7 flex flex-col flex-1">
-                      <h3 className="font-heading text-xl font-bold text-text-dark mb-3 group-hover:text-accent transition-colors duration-300">
-                        {item.title}
-                      </h3>
-                      <p className="text-text-dark-muted text-sm leading-relaxed mb-6">
-                        {item.description}
-                      </p>
-
-                      {/* Tags */}
-                      <div className="flex flex-wrap gap-1.5 mt-auto">
-                        {item.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="px-2.5 py-1 text-[10px] font-medium text-text-dark-muted bg-light-primary border border-card-light-border group-hover:border-accent/20 group-hover:text-accent transition-colors duration-300"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
+                    <div className="absolute bottom-3 left-3 right-3">
+                      <p className="font-heading font-bold text-white text-lg leading-none">{item.metric.value}</p>
                     </div>
-
-                    {/* Animated top border */}
-                    <div className="absolute top-0 left-0 h-[3px] w-0 bg-accent group-hover:w-full transition-all duration-700 z-20" />
                   </div>
-                </SpotlightCard>
-              </ScrollReveal>
+
+                  <div className="flex flex-col flex-1 min-w-0 min-h-0" style={{ padding: "var(--fp-card-pad)" }}>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-heading text-[12px] text-text-dark-muted/50 tabular-nums">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <ArrowUpRight
+                        size={15}
+                        className="text-text-dark-muted/40 transition-all duration-300 group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      />
+                    </div>
+                    <h3 className="fp-card-title font-heading font-bold text-text-dark mb-1.5 leading-tight transition-colors group-hover:text-accent">
+                      {item.title}
+                    </h3>
+                    <p className="fp-body text-text-dark-muted line-clamp-3 mb-3">{item.description}</p>
+                    <div className="flex flex-wrap gap-1.5 mt-auto">
+                      {item.tags.slice(0, 3).map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-[11px] px-2 py-0.5 text-text-dark-muted bg-light-primary border border-card-light-border font-medium"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </SpotlightCard>
             );
           })}
         </div>
-
-        {/* Full-width CTA banner */}
-        <ScrollReveal delay={0.15}>
-          <div className="group relative mt-6 overflow-hidden border border-card-dark-border bg-gradient-to-br from-dark-primary to-dark-secondary">
-            <div
-              className="absolute inset-0 opacity-70 pointer-events-none"
-              style={{ background: "radial-gradient(ellipse 700px 320px at 85% 0%, color-mix(in srgb, var(--accent) 22%, transparent) 0%, transparent 65%)" }}
-              aria-hidden="true"
-            />
-            <div className="relative flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 p-8 lg:p-10">
-              <div className="max-w-2xl">
-                <SectionRail label="Beyond the list" theme="dark" />
-                <h3 className="font-heading text-2xl md:text-3xl font-bold text-white tracking-tight mb-3">
-                  Your clients not listed?
-                </h3>
-                <p className="text-white/60 text-sm md:text-base leading-relaxed mb-5">
-                  If their customers message them, Clonvo can help. Tell us about your client mix and we will show you how it would look under your brand.
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {["Restaurants", "Fitness studios", "Education", "Travel & tourism"].map((s) => (
-                    <span
-                      key={s}
-                      className="px-3 py-1.5 text-[11px] font-medium text-white/70 bg-white/5 border border-white/10"
-                    >
-                      {s}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-3 shrink-0 self-start lg:self-auto">
-                <a
-                  href={siteConfig.bookingUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-md px-7 py-4 bg-accent text-white text-sm font-semibold whitespace-nowrap shadow-lg shadow-accent/20 hover:bg-accent-hover hover:scale-[1.03] transition-all duration-300"
-                >
-                  {siteConfig.bookingLabel}
-                  <ArrowUpRight size={16} />
-                </a>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center gap-2 rounded-md px-7 py-4 border border-white/25 text-white text-sm font-semibold whitespace-nowrap hover:border-white/60 hover:bg-white/10 transition-all duration-300"
-                >
-                  Send a message
-                </Link>
-              </div>
-            </div>
-          </div>
-        </ScrollReveal>
       </div>
     </section>
   );

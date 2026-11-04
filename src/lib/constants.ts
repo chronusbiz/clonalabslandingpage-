@@ -1,18 +1,20 @@
 export const siteConfig = {
-  name: "Clonalabs",
+  name: "ClonaLabs",
   productName: "Clonvo",
   productUrl: "https://clonvo.chat",
-  tagline: "White-label AI inquiry handling for agencies.",
+  tagline: "Technology that works harder for your business.",
   description:
-    "Clonalabs runs Clonvo — the AI inbox for WhatsApp, Instagram and Messenger — so agencies can sell it under their own brand. Cited AI replies, human handoff, no per-seat fees, no revenue share.",
+    "ClonaLabs helps Canadian businesses improve operations, build custom digital solutions and put practical AI to work—with technology shaped around real business needs.",
   url: "https://clonalabs.ca",
   email: "support@clonvo.chat",
-  // E.164 format for tel: links and WhatsApp deep links.
   phone: "+923258821216",
-  // Human-readable variant for display in copy and the contact strip.
   phoneDisplay: "+92 325 8821216",
-  bookingUrl: "https://cal.com/muhammad-owais/15-min-demo",
-  bookingLabel: "Book a 15-minute walkthrough",
+  bookingUrl: "/contact",
+  bookingLabel: "Talk to Our Team",
+  contactCta: "Talk to Our Team",
+  discussCta: "Discuss Your Project",
+  demoUrl: "https://cal.com/muhammad-owais/15-min-demo",
+  demoLabel: "Book a 15-minute demo",
   offices: [
     {
       country: "Canada",
@@ -38,99 +40,281 @@ export const siteConfig = {
   founded: "2024",
 };
 
-/** Mostly anchors on the home page. Anchors are root-relative so they also
- *  work when clicked from /faq, /contact, etc. */
+/** Top-level nav — Solutions / Products / Industries / Our Work / About + Contact CTA */
 export const navLinks = [
-  { label: "Product", href: "/#product" },
-  { label: "How it works", href: "/#how-it-works" },
-  { label: "Pricing", href: "/#pricing" },
+  { label: "Solutions", href: "/#solutions" },
+  { label: "Products", href: "/#products" },
+  { label: "Industries", href: "/#industries" },
+  { label: "Our Work", href: "/#how-we-work" },
+  { label: "About", href: "/about" },
   { label: "FAQ", href: "/faq" },
-  { label: "Contact", href: "/contact" },
 ];
 
-/** External links open in a new tab. */
 export function linkTargetProps(href: string) {
   return /^https?:\/\//.test(href)
     ? { target: "_blank" as const, rel: "noopener noreferrer" }
     : {};
 }
 
-/** Product pillars (rendered by the Services section). */
+/** Six service pillars — rendered by the Services section */
 export const productPillars = [
   {
-    icon: "Inbox",
-    slug: "unified-inbox",
-    title: "Unified Meta inbox",
+    icon: "Bot",
+    slug: "ai-intelligent-systems",
+    title: "AI & Intelligent Systems",
     description:
-      "WhatsApp, Instagram and Messenger land in one inbox your clients' teams can actually keep up with — with an ops dashboard that shows what is open, answered and escalated.",
+      "Apply AI to real workflows, customer interactions and operational bottlenecks.",
   },
   {
-    icon: "BookCheck",
-    slug: "cited-ai",
-    title: "Cited AI replies",
+    icon: "Code2",
+    slug: "custom-software",
+    title: "Custom Software & Product Engineering",
     description:
-      "The AI answers from your clients' own documents, FAQs and policies — and shows the source. Grounded replies, not guesses, so inquiries get a real answer at any hour.",
+      "Design and build software around the way your business actually works.",
   },
   {
-    icon: "UserRoundCheck",
-    slug: "human-handoff",
-    title: "Human handoff",
+    icon: "Smartphone",
+    slug: "web-mobile",
+    title: "Web & Mobile Development",
     description:
-      "When a question needs a person, the conversation is handed to a human with full context. Clients stay in control of what the AI handles and what it never touches.",
+      "Create useful, accessible digital experiences across web and mobile.",
   },
   {
-    icon: "BadgeCheck",
-    slug: "white-label-portal",
-    title: "White-label portal",
+    icon: "FlaskConical",
+    slug: "ai-evaluation",
+    title: "AI Evaluation & Data Operations",
     description:
-      "Sell Clonvo as your own product. Your brand sits on the portal your clients see; Clonalabs runs the platform behind it — with no revenue share and no per-seat fees.",
+      "Evaluate model performance and prepare high-quality data for AI development.",
+  },
+  {
+    icon: "Users",
+    slug: "product-delivery",
+    title: "Product Development & Dedicated Delivery",
+    description:
+      "Move from product idea to a dependable delivery capability.",
+  },
+  {
+    icon: "Megaphone",
+    slug: "digital-growth",
+    title: "Digital Presence & Growth",
+    description:
+      "Build a consistent digital presence and practical growth systems.",
+  },
+];
+
+/** Hover detail points for each service pillar (same order as productPillars) */
+export const servicePillarDetails: { subtitle: string; points: string[] }[] = [
+  {
+    subtitle: "AI that fits real work",
+    points: [
+      "AI strategy and discovery",
+      "AI workflow automation",
+      "AI agents and assistants",
+      "Conversational AI",
+      "LLM integration",
+    ],
+  },
+  {
+    subtitle: "Software around your process",
+    points: [
+      "Custom software",
+      "SaaS development",
+      "Business platforms and portals",
+      "API and system integration",
+      "Modernization",
+    ],
+  },
+  {
+    subtitle: "Experiences people can use",
+    points: [
+      "Business websites",
+      "Web applications",
+      "Customer portals",
+      "Mobile applications",
+      "UI/UX design",
+    ],
+  },
+  {
+    subtitle: "Measure before you scale",
+    points: [
+      "LLM benchmarking",
+      "Model evaluation",
+      "Adversarial testing",
+      "Data annotation",
+      "Dataset quality and review",
+    ],
+  },
+  {
+    subtitle: "From idea to delivery team",
+    points: [
+      "Product discovery",
+      "MVP development",
+      "Product modernization",
+      "Dedicated development teams",
+      "Ongoing engineering",
+    ],
+  },
+  {
+    subtitle: "Presence that supports growth",
+    points: [
+      "Brand identity",
+      "Website development",
+      "Social media management",
+      "Lead generation",
+      "Digital marketing",
+    ],
   },
 ];
 
 export const stats = [
-  { value: 3, suffix: "", label: "Meta channels, one inbox" },
-  { value: 0, suffix: "", label: "Per-seat fees" },
-  { value: 3, suffix: "", label: "Steps to go live" },
-  { value: 256, suffix: "-bit", label: "AES encryption" },
+  { value: 4, suffix: "", label: "Ready-to-deploy products" },
+  { value: 6, suffix: "", label: "Service capability pillars" },
+  { value: 2, suffix: "", label: "Delivery hubs" },
+  { value: 15, suffix: " min", label: "Typical first conversation" },
 ];
 
 export const heroProofPoints = [
-  { value: "3", label: "Channels, one inbox" },
-  { value: "$0", label: "Per-seat fees" },
-  { value: "~3 steps", label: "To go live" },
+  { value: "Products", label: "Ready-to-deploy platforms" },
+  { value: "Services", label: "Six delivery pillars" },
+  { value: "Practical", label: "AI for real operations" },
 ];
 
-/** Use cases / agency client verticals (rendered by the Industries section). */
+/** Buyer challenges — four outcome cards */
+export const buyerChallenges = [
+  {
+    label: "Reduce handoffs",
+    value: "Cut repetitive tasks",
+    note: "Fewer manual handoffs across teams and tools",
+  },
+  {
+    label: "Connect systems",
+    value: "One clearer workflow",
+    note: "Bring disconnected tools into one process",
+  },
+  {
+    label: "Modernize",
+    value: "Replace outdated steps",
+    note: "Useful software instead of workarounds",
+  },
+  {
+    label: "Build capacity",
+    value: "Grow without clutter",
+    note: "Digital capacity without unnecessary complexity",
+  },
+];
+
+/** Featured products — rendered by the Pricing/products section */
+export const featuredProducts = [
+  {
+    name: "Clonvo",
+    category: "AI customer conversation platform",
+    blurb:
+      "Manage customer conversations through configured AI-assisted communication workflows. Branded partner experiences may be offered under agreed white-label terms.",
+    href: "https://clonvo.chat",
+    cta: "Explore Clonvo",
+    status: "Live",
+    points: [
+      "WhatsApp, Instagram and Messenger",
+      "Cited AI replies from your docs",
+      "Human handoff with context",
+      "Partner white-label options",
+    ],
+    featured: true,
+  },
+  {
+    name: "ProTender",
+    category: "Tender and proposal workflow software",
+    blurb:
+      "Software designed to support tender and proposal-related workflows. Feature language matches approved live product scope only.",
+    href: "/contact",
+    cta: "Explore ProTender",
+    status: "Live",
+    points: [
+      "Tender and proposal workflows",
+      "Team collaboration paths",
+      "Structured submission support",
+      "Scope confirmed on enquiry",
+    ],
+    featured: false,
+  },
+  {
+    name: "Breaking Portal",
+    category: "Newsroom and publishing workflow platform",
+    blurb:
+      "Organize breaking-news and publishing workflows. We present only verified live editorial, publishing and team capabilities.",
+    href: "/contact",
+    cta: "Explore Breaking Portal",
+    status: "Live",
+    points: [
+      "Newsroom workflow structure",
+      "Publishing coordination",
+      "Team roles and handoffs",
+      "Verified capabilities only",
+    ],
+    featured: false,
+  },
+  {
+    name: "Genesis Studio",
+    category: "Website and content studio / CMS",
+    blurb:
+      "A studio/CMS product for creating and managing website or content experiences—not an AI-agent orchestration platform.",
+    href: "/contact",
+    cta: "Explore Genesis Studio",
+    status: "Live",
+    points: [
+      "Website and content management",
+      "Editable page experiences",
+      "Studio-style authoring",
+      "Practical publishing controls",
+    ],
+    featured: false,
+  },
+];
+
+/** Keep alias used by older imports during transition */
+export const pricingPlans = featuredProducts.map((p) => ({
+  name: p.name,
+  price: 0,
+  blurb: p.blurb,
+  messages: p.category,
+  channels: p.status,
+  features: p.points,
+  popular: p.featured,
+  href: p.href,
+  cta: p.cta,
+}));
+
+/** Industries — buyer-specific relevance */
 export const useCases = [
   {
-    slug: "home-services",
-    icon: "Wrench",
-    title: "HVAC & home services",
-    image: "/images/team-office.jpg",
+    slug: "professional-services",
+    icon: "Scale",
+    title: "Professional services",
+    image: "/images/team-collab.jpg",
     description:
-      "Quote requests and booking questions arrive after hours on WhatsApp and Messenger. Cited AI answers service-area, pricing and availability questions and hands the hot leads to a person.",
-    metric: { value: "After-hours", label: "Inquiries answered, not missed" },
-    tags: ["Quotes", "Booking", "Service areas", "Handoff"],
+      "Intake, client communication and delivery workflows that need clear process, secure knowledge and practical automation.",
+    metric: { value: "Process", label: "Clarity without extra complexity" },
+    tags: ["Intake", "Knowledge", "Automation", "Portals"],
   },
   {
-    slug: "clinics",
+    slug: "healthcare-operations",
     icon: "HeartPulse",
-    title: "Clinics & dental practices",
+    title: "Healthcare operations",
     image: "/images/industry-health.jpg",
     description:
-      "Front desks drown in the same questions — hours, services, insurance, prep. Answer them from the clinic's own documents and route anything clinical or sensitive straight to staff.",
-    metric: { value: "Grounded", label: "Answers from the clinic's own docs" },
-    tags: ["Hours & services", "FAQs", "Staff handoff", "Private"],
+      "Front-office and back-office digital experiences that respect careful data handling and human oversight.",
+    metric: { value: "Careful", label: "Oversight built into the workflow" },
+    tags: ["Operations", "Portals", "FAQs", "Handoff"],
   },
   {
-    slug: "ecommerce",
+    slug: "retail-ecommerce",
     icon: "ShoppingBag",
-    title: "Ecommerce & D2C",
+    title: "Retail & ecommerce",
     image: "/images/industry-ecom.jpg",
     description:
-      "Shipping, returns and product questions come in through Instagram DMs and WhatsApp. Resolve the repeatable ones instantly and give support one inbox for the rest.",
-    metric: { value: "One inbox", label: "Instagram, WhatsApp & Messenger" },
-    tags: ["Shipping", "Returns", "Product Q&A", "DMs"],
+      "Customer conversations, catalogues and order workflows brought into systems teams can actually run day to day.",
+    metric: { value: "Customers", label: "Meet them where they already message" },
+    tags: ["Conversations", "Orders", "Support", "Web"],
   },
   {
     slug: "real-estate",
@@ -138,223 +322,229 @@ export const useCases = [
     title: "Real estate & property",
     image: "/images/team-meeting.jpg",
     description:
-      "Listings generate a flood of 'is this still available?' messages. Qualify and answer from listing details, then pass serious buyers to an agent with the full conversation attached.",
-    metric: { value: "Qualified", label: "Leads handed to agents with context" },
-    tags: ["Listings", "Qualification", "Viewings", "Handoff"],
+      "Listing questions, lead qualification and follow-up flows shaped around how property teams already work.",
+    metric: { value: "Leads", label: "Context preserved for every handoff" },
+    tags: ["Listings", "Leads", "Follow-up", "Portals"],
   },
   {
-    slug: "immigration-professional",
-    icon: "Scale",
-    title: "Immigration & professional services",
-    image: "/images/team-collab.jpg",
+    slug: "home-services",
+    icon: "Wrench",
+    title: "Home & field services",
+    image: "/images/team-office.jpg",
     description:
-      "Consultants and advisory firms field repeat intake questions all day. Answer from published guidance with citations, and escalate case-specific questions to a licensed human.",
-    metric: { value: "Cited", label: "Every answer shows its source" },
-    tags: ["Intake", "Citations", "Escalation", "Licensed review"],
+      "Quotes, booking and after-hours questions handled with useful software—not more spreadsheets.",
+    metric: { value: "After hours", label: "Inquiries that still get answered" },
+    tags: ["Quotes", "Booking", "Field", "Messaging"],
   },
   {
-    slug: "agencies",
+    slug: "agencies-partners",
     icon: "Megaphone",
-    title: "Marketing & web agencies",
+    title: "Agencies & partners",
     image: "/images/service-digital.jpg",
     description:
-      "The core fit: add AI inquiry handling to your retainers, brand it as yours and keep the margin. Clonalabs runs the platform; you own the client relationship.",
-    metric: { value: "Your brand", label: "Your clients, your pricing, your margin" },
-    tags: ["White-label", "Resell", "No rev share", "Your pricing"],
+      "White-label and partner delivery models for teams that want to offer digital products under their own brand.",
+    metric: { value: "Partners", label: "Your brand on agreed terms" },
+    tags: ["White-label", "Products", "Delivery", "Growth"],
   },
 ];
 
-/** Agency onboarding steps (rendered by the Approach section). */
+/** How we work — five delivery steps */
 export const approach = [
   {
     step: "01",
-    title: "Book a walkthrough",
+    title: "Discover",
     description:
-      "A 15-minute call to see Clonvo live, talk through your agency and client mix, and pick the plan tiers that fit what you plan to resell.",
+      "We map the challenge, current systems, constraints and success criteria so the next step is grounded in how the business actually operates.",
   },
   {
     step: "02",
-    title: "Brand it as yours",
+    title: "Define",
     description:
-      "Set up the white-label portal with your brand so clients see your name, not ours. Clonalabs runs the platform behind it.",
+      "Scope, priorities, ownership and a clear delivery plan. You know what will be built, what is out of scope, and how progress will be reviewed.",
   },
   {
     step: "03",
-    title: "Connect the channels",
+    title: "Design & Build",
     description:
-      "Link WhatsApp, Instagram and Messenger through Meta's official APIs so every inquiry lands in one unified inbox.",
+      "Interfaces, workflows and integrations are designed and implemented against the agreed scope—with regular checkpoints, not big surprises.",
   },
   {
     step: "04",
-    title: "Add client knowledge",
+    title: "Launch",
     description:
-      "Upload each client's documents, FAQs and policies. The AI answers only from what you give it, and cites the source on every reply.",
+      "Go-live with the training, handoff and operational checks needed for real users. Launch is a controlled release, not a hand-wave.",
   },
   {
     step: "05",
-    title: "Set handoff rules",
+    title: "Improve",
     description:
-      "Decide what the AI handles and what goes to a human. Escalations arrive with the full conversation so nothing has to be repeated.",
-  },
-  {
-    step: "06",
-    title: "Go live and resell",
-    description:
-      "Turn it on, watch results in the ops dashboard and bill clients at your own price. No per-seat fees and no revenue share to Clonalabs.",
+      "Measure what matters, fix friction and iterate. Delivery continues through practical improvements after the first release.",
   },
 ];
 
-export const pricingPlans = [
+export const approachStepMeta = [
   {
-    name: "Starter",
-    price: 35,
-    blurb: "A first white-label client or a single-channel pilot.",
-    messages: "5,000 messages / month",
-    channels: "1 channel",
-    features: [
-      "Unified inbox",
-      "Cited AI replies from client docs",
-      "Human handoff",
-      "Ops dashboard",
+    icon: "Search",
+    tagline: "Understand the real constraint",
+    owner: "You + ClonaLabs",
+    deliverables: [
+      "Workflow and system map",
+      "Success criteria",
+      "Priority opportunities",
     ],
-    popular: false,
   },
   {
-    name: "Growth",
-    price: 79,
-    blurb: "Clients who live across Meta channels and their own website.",
-    messages: "15,000 messages / month",
-    channels: "WhatsApp, Instagram, Messenger + web chat",
-    features: [
-      "Everything in Starter",
-      "All Meta channels plus web chat",
-      "15,000 messages per month",
-      "Ops dashboard and human handoff",
+    icon: "ClipboardList",
+    tagline: "Agree scope before build",
+    owner: "You + ClonaLabs",
+    deliverables: [
+      "Clear scope boundaries",
+      "Delivery plan and owners",
+      "Review cadence",
     ],
-    popular: false,
   },
   {
-    name: "Pro",
-    price: 99,
-    blurb: "The plan most agencies resell — adds voice for premium clients.",
-    messages: "30,000 messages / month",
-    channels: "All channels + voice",
-    features: [
-      "Everything in Growth",
-      "Voice",
-      "30,000 messages per month",
-      "Ops dashboard and human handoff",
+    icon: "PencilRuler",
+    tagline: "Build against the plan",
+    owner: "ClonaLabs",
+    deliverables: [
+      "Working software increments",
+      "Design and engineering checkpoints",
+      "Integration against live systems",
     ],
-    popular: true,
   },
   {
-    name: "Scale",
-    price: 249,
-    blurb: "High-volume and regulated clients who need guarantees.",
-    messages: "100,000 messages / month",
-    channels: "All channels + voice",
-    features: [
-      "Everything in Pro",
-      "100,000 messages per month",
-      "SLA",
-      "DPA",
+    icon: "Rocket",
+    tagline: "Release with operational care",
+    owner: "You + ClonaLabs",
+    deliverables: [
+      "Go-live checklist",
+      "Handoff and training",
+      "Support path",
     ],
-    popular: false,
+  },
+  {
+    icon: "RefreshCw",
+    tagline: "Keep improving what ships",
+    owner: "You + ClonaLabs",
+    deliverables: [
+      "Usage and friction review",
+      "Prioritized improvements",
+      "Ongoing delivery options",
+    ],
+  },
+];
+
+export const whyChooseUs = [
+  {
+    icon: "Handshake",
+    label: "Business-first discovery",
+    desc: "We start with the workflow and the outcome, not a tool pitch.",
+  },
+  {
+    icon: "Layers",
+    label: "Products and services",
+    desc: "Ready platforms where they fit, custom delivery where they do not.",
+  },
+  {
+    icon: "MessageSquare",
+    label: "Clear scope and communication",
+    desc: "Agreed boundaries, regular updates and no vague promises.",
+  },
+  {
+    icon: "ShieldCheck",
+    label: "Practical delivery",
+    desc: "Launch carefully, then improve with real usage in mind.",
   },
 ];
 
 export const trustPoints = [
-  { label: "Meta official APIs" },
-  { label: "AES-256 encryption" },
-  { label: "Tenant isolation" },
-  { label: "Canada + Pakistan teams" },
+  { label: "Products + services, clearly separated" },
+  { label: "Practical AI for real operations" },
+  { label: "Verified capabilities only" },
+  { label: "Canada + Pakistan delivery hubs" },
 ];
 
 export const faq = [
   {
-    question: "What is Clonalabs?",
+    question: "What is ClonaLabs?",
     answer:
-      "Clonalabs runs Clonvo, an AI inbox that unifies WhatsApp, Instagram and Messenger. We offer it to agencies as a white-label platform: you sell it under your own brand, and we operate the platform behind it.",
+      "ClonaLabs is a technology partner for Canadian businesses. We help improve operations, build custom digital solutions and put practical AI to work—through ready-to-deploy products and six service capability pillars.",
+  },
+  {
+    question: "How are products different from services?",
+    answer:
+      "Products are commercial platforms you can explore and adopt (Clonvo, ProTender, Breaking Portal, Genesis Studio). Services are delivery capabilities—AI systems, custom software, web and mobile, evaluation and data operations, product teams, and digital presence—scoped to your business.",
   },
   {
     question: "What is Clonvo?",
     answer:
-      "Clonvo (clonvo.chat) is the product. It brings WhatsApp, Instagram and Messenger into one inbox, answers inquiries with AI replies grounded in your documents with citations, hands conversations to humans when needed, and gives operators a dashboard to see what is happening.",
+      "Clonvo is our AI customer conversation platform for managing conversations through configured AI-assisted workflows across channels such as WhatsApp, Instagram and Messenger. Branded partner experiences may be offered under agreed white-label terms. White-label access does not transfer platform or source-code ownership.",
   },
   {
-    question: "What does white-label mean here?",
+    question: "What other products do you offer?",
     answer:
-      "Your agency presents Clonvo as your own product. Your clients see your brand; Clonalabs runs the platform, infrastructure and updates behind the scenes. You own the client relationship and set your own pricing.",
+      "ProTender supports tender and proposal workflows. Breaking Portal supports newsroom and publishing workflows. Genesis Studio is a website and content studio/CMS. We only describe verified live capabilities on each product.",
   },
   {
-    question: "Is there a revenue share?",
+    question: "Do you offer SEO or Google Search management?",
     answer:
-      "No. There is no revenue share and no per-seat fee. You pay the plan price for the volume you need and keep whatever you charge your clients above it.",
+      "No. Digital Presence & Growth is a supporting capability for brand, websites, social, lead generation and digital marketing—not a substitute for our core engineering proposition, and not an SEO/Search management offering.",
   },
   {
-    question: "How does the AI avoid making things up?",
+    question: "How do engagements usually start?",
     answer:
-      "Replies are grounded in the documents, FAQs and policies you upload for each client, and each answer shows the source it came from. When the AI is not confident or the topic needs a person, the conversation is handed to a human.",
+      "With a conversation about your goals, current systems and challenges. From there we route you to the right product path or service discovery—Discover → Define → Design & Build → Launch → Improve.",
   },
   {
-    question: "Which channels are supported?",
+    question: "Where does ClonaLabs operate?",
     answer:
-      "WhatsApp, Instagram and Messenger through Meta's official APIs. The Growth plan and above also include web chat, and the Pro and Scale plans add voice.",
-  },
-  {
-    question: "What do the plans cost?",
-    answer:
-      "Starter is $35/month (5,000 messages, 1 channel), Growth is $79/month (15,000 messages, WhatsApp, Instagram, Messenger and web chat), Pro is $99/month (voice, 30,000 messages) and Scale is $249/month (100,000 messages, SLA and DPA). All prices are in USD.",
-  },
-  {
-    question: "How is client data protected?",
-    answer:
-      "Data is encrypted with AES-256 and every client runs in an isolated tenant, so one client's information is never mixed with another's. Scale plans include a DPA for clients who need one.",
-  },
-  {
-    question: "How fast can we go live?",
-    answer:
-      "Clonvo goes live in about three steps: connect your channels, add client knowledge, and set handoff rules. A 15-minute walkthrough is the fastest way to see the flow end to end.",
-  },
-  {
-    question: "Can we use it for our own agency as well as clients?",
-    answer:
-      "Yes. Running Clonvo on your own inquiries is a good way to show prospective clients exactly what they would be buying.",
-  },
-  {
-    question: "Where is Clonalabs based?",
-    answer:
-      "We have an office in Mississauga, Ontario, Canada and an engineering office in Lahore, Pakistan.",
+      "We work with Canadian-market buyers and operate delivery hubs in Mississauga, Canada and Lahore, Pakistan. Specific legal entity, contracting and residency claims are confirmed with the Canadian partner for each engagement.",
   },
   {
     question: "How do I get started?",
     answer:
-      "Book a 15-minute walkthrough, or email support@clonvo.chat. We will show you the product, discuss your agency and clients, and recommend the plans that fit.",
+      "Use Talk to Our Team on the contact page, or book a short demo when you want to see a specific product such as Clonvo.",
   },
 ];
 
 export const footerLinks = {
-  product: [
-    { label: "Unified Meta inbox", href: "/#product" },
-    { label: "Cited AI replies", href: "/#product" },
-    { label: "Human handoff", href: "/#product" },
-    { label: "White-label portal", href: "/#product" },
-  ],
-  agencies: [
-    { label: "How it works", href: "/#how-it-works" },
-    { label: "Use cases", href: "/#use-cases" },
-    { label: "Pricing", href: "/#pricing" },
-    { label: "Visit Clonvo", href: "https://clonvo.chat" },
-  ],
   company: [
     { label: "About", href: "/about" },
+    { label: "How we work", href: "/#how-we-work" },
     { label: "FAQ", href: "/faq" },
     { label: "Contact", href: "/contact" },
-    { label: "Book a walkthrough", href: "https://cal.com/muhammad-owais/15-min-demo" },
   ],
-  legal: [
+  services: [
+    { label: "AI & Intelligent Systems", href: "/#solutions" },
+    { label: "Custom Software", href: "/#solutions" },
+    { label: "Web & Mobile", href: "/#solutions" },
+    { label: "AI Evaluation & Data Ops", href: "/#solutions" },
+    { label: "Product Delivery", href: "/#solutions" },
+    { label: "Digital Presence & Growth", href: "/#solutions" },
+  ],
+  products: [
+    { label: "Clonvo", href: "https://clonvo.chat" },
+    { label: "ProTender", href: "/#products" },
+    { label: "Breaking Portal", href: "/#products" },
+    { label: "Genesis Studio", href: "/#products" },
+  ],
+  resources: [
+    { label: "Industries", href: "/#industries" },
     { label: "Privacy Policy", href: "/privacy" },
     { label: "Terms of Service", href: "/terms" },
     { label: "Cookie Policy", href: "/cookie-policy" },
   ],
 };
+
+/** Detail pages and alternate home sections — from bak content pack */
+export {
+  servicePillars,
+  products,
+  industries,
+  howWeWork,
+  workExamples,
+  insights,
+  challenges,
+  credibility,
+} from "./constants.clonalabs.bak";
