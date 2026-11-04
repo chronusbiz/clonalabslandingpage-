@@ -25,7 +25,7 @@ const cookieTypes = [
     title: "Analytics",
     description:
       "Loaded only after you click \"Accept\" in our cookie banner. They give us anonymous, aggregated traffic data so we can improve the site. They do not identify you personally.",
-    examples: "Vercel Analytics, Vercel Speed Insights",
+    examples: "Google Analytics 4 (loaded only after you accept)",
   },
   {
     icon: Target,
@@ -52,7 +52,7 @@ const generalSections = [
   {
     title: "Your Choice",
     content:
-      "On your first visit you will see a cookie banner with \"Accept\" and \"Decline\" options. Analytics is only loaded if you accept. Declining means we will not load Vercel Analytics or Speed Insights at all on your visit.",
+      "On your first visit you will see a cookie banner with \"Accept\" and \"Decline\" options. Analytics is only loaded if you accept. Declining means we will not load Google Analytics at all on your visit.",
   },
   {
     title: "Changing Your Choice",
