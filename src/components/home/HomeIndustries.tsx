@@ -1,35 +1,30 @@
 import Link from "next/link";
-import { industries } from "@/lib/constants";
-import SectionHeading from "@/components/ui/SectionHeading";
+import { useCases } from "@/lib/constants";
 
 export default function HomeIndustries() {
   return (
-    <section className="bg-dark-primary py-20 lg:py-28">
-      <div className="mx-auto max-w-[1400px] px-6 lg:px-8">
-        <SectionHeading
-          theme="dark"
-          eyebrow="Industries"
-          title="Technology shaped around the way your industry works."
-          aside={
-            <Link
-              href="/industries"
-              className="text-sm font-medium text-accent-light underline decoration-accent-light/30 underline-offset-4 hover:decoration-accent-light"
+    <section className="bg-surface" aria-labelledby="industries-heading">
+      <div className="container-site section">
+        <div className="flex flex-wrap items-end justify-between gap-4 mb-10">
+          <div>
+            <p className="label text-text-muted mb-3">Industries</p>
+            <h2 id="industries-heading" className="text-h2 text-ink max-w-[22ch]">
+              Built for how Canadian teams actually work.
+            </h2>
+          </div>
+          <Link href="/industries" className="link-text">
+            All industries
+          </Link>
+        </div>
+
+        <ul className="border-t border-border grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          {useCases.map((u) => (
+            <li
+              key={u.slug}
+              className="border-b border-border sm:border-r sm:odd:[&:nth-child(2n)]:border-r-0 lg:odd:[&:nth-child(2n)]:border-r lg:[&:nth-child(3n)]:border-r-0 p-5"
             >
-              Explore industries
-            </Link>
-          }
-        />
-        <ul className="grid gap-x-12 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
-          {industries.map((industry) => (
-            <li key={industry.slug} className="border-t border-white/10 pt-5">
-              <Link href={`/industries#${industry.slug}`} className="group block">
-                <h3 className="font-heading text-2xl text-white transition group-hover:text-accent-light">
-                  {industry.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-white/60">
-                  {industry.summary}
-                </p>
-              </Link>
+              <h3 className="text-h3 text-ink mb-2">{u.title}</h3>
+              <p className="text-small text-text-muted">{u.description}</p>
             </li>
           ))}
         </ul>

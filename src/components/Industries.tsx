@@ -48,7 +48,7 @@ export default function Industries() {
               <span className="gradient-text">your industry.</span>
             </>
           }
-          description="Sectors where we can show a relevant use case—services, healthcare, retail, property, field work, and agencies."
+          description="We work where operational friction is real and where AI and software must hold up in daily use."
           aside={
             <a
               href={siteConfig.bookingUrl}

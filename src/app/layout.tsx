@@ -7,27 +7,25 @@ import "./globals.css";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://clonalabs.ca";
 
 const DESCRIPTION =
-  "ClonaLabs helps Canadian businesses improve operations, build custom digital solutions and put practical AI to work—with ready-to-deploy products and six service capability pillars.";
+  "ClonaLabs helps Canadian businesses turn AI and software ideas into production systems with clear scope, senior ownership and handover ready delivery.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "ClonaLabs | Technology partner for Canadian businesses",
+    default: "ClonaLabs | AI and Software Engineering Partner Canada",
     template: "%s | ClonaLabs",
   },
   description: DESCRIPTION,
   keywords: [
+    "AI engineering partner Canada",
+    "custom software development Canada",
+    "fractional CTO Canada",
+    "AI model evaluation",
+    "Mississauga software company",
+    "AI solutions for Canadian businesses",
     "ClonaLabs",
-    "Canadian technology partner",
-    "custom software development",
-    "practical AI",
-    "AI systems",
-    "web and mobile development",
     "Clonvo",
     "ProTender",
-    "product delivery",
-    "Mississauga technology company",
-    "digital solutions Canada",
   ],
   authors: [{ name: "ClonaLabs", url: SITE_URL }],
   creator: "ClonaLabs",
@@ -58,7 +56,7 @@ export const metadata: Metadata = {
     locale: "en_CA",
     url: "/",
     siteName: "ClonaLabs",
-    title: "ClonaLabs | Technology partner for Canadian businesses",
+    title: "ClonaLabs | AI and Software Engineering Partner Canada",
     description: DESCRIPTION,
     images: [
       {
@@ -72,7 +70,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ClonaLabs | Technology partner for Canadian businesses",
+    title: "ClonaLabs | AI and Software Engineering Partner Canada",
     description: DESCRIPTION,
     images: [
       {

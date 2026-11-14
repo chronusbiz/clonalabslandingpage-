@@ -1,23 +1,24 @@
-import Button from "@/components/ui/Button";
+import Link from "next/link";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export default function NotFound() {
   return (
-    <div id="main-content" className="min-h-screen bg-dark-primary flex items-center justify-center px-6">
-      <div className="text-center max-w-lg">
-        <h1 className="font-heading text-8xl md:text-9xl font-bold gradient-text mb-4">
-          404
-        </h1>
-        <h2 className="font-heading text-2xl md:text-3xl font-bold text-text-light mb-4">
-          Page Not Found
-        </h2>
-        <p className="text-text-light-muted mb-8 leading-relaxed">
-          The page you&apos;re looking for doesn&apos;t exist or has been moved.
-          Let&apos;s get you back on track.
-        </p>
-        <Button href="/" size="lg">
-          Back to Home
-        </Button>
-      </div>
-    </div>
+    <>
+      <Navbar />
+      <main id="main-content" className="bg-surface">
+        <div className="container-site section text-center py-24">
+          <p className="font-mono text-small text-accent mb-4">404</p>
+          <h1 className="text-h1 text-ink mb-4">Page not found</h1>
+          <p className="text-body text-text-muted prose-measure mx-auto mb-8">
+            The page you are looking for does not exist or has moved.
+          </p>
+          <Link href="/" className="btn btn-primary">
+            Back to home
+          </Link>
+        </div>
+      </main>
+      <Footer />
+    </>
   );
 }

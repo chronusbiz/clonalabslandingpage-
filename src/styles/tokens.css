@@ -1,0 +1,72 @@
+/* ClonaLabs design tokens — enterprise editorial system */
+
+:root {
+  --ink: #0b1220;
+  --ink-elevated: #141c2b;
+  --ink-muted: #2a3447;
+  --surface: #f6f4ef;
+  --surface-raised: #ffffff;
+  --surface-muted: #ebe8e1;
+  --border: #d9d4c8;
+  --border-strong: #b8b2a4;
+  --text: #0b1220;
+  --text-muted: #4a5568;
+  --text-on-ink: #f6f4ef;
+  --text-on-ink-muted: #a8b0c0;
+  --accent: #d9482b;
+  --accent-hover: #c03d23;
+  --accent-subtle: #f8e8e3;
+  --status-live: #0f766e;
+  --status-live-bg: #e6f4f2;
+  --status-beta: #b45309;
+  --status-beta-bg: #fef3c7;
+
+  --dark-primary: var(--ink);
+  --dark-secondary: var(--ink-elevated);
+  --light-primary: var(--surface);
+  --light-secondary: var(--surface-raised);
+  --accent-deep: #a83620;
+  --accent-light: #e8795f;
+  --text-light: var(--text-on-ink);
+  --text-light-muted: var(--text-on-ink-muted);
+  --text-dark: var(--text);
+  --text-dark-muted: var(--text-muted);
+  --card-dark: var(--ink-elevated);
+  --card-dark-border: var(--ink-muted);
+  --card-light: var(--surface-raised);
+  --card-light-border: var(--border);
+
+  --font-display: "Optima", "Optima LT Std", Candara, "Segoe UI", sans-serif;
+  --font-body: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --text-display: clamp(2.5rem, 4vw + 1rem, 3.75rem);
+  --text-h1: clamp(2rem, 2.5vw + 1rem, 2.75rem);
+  --text-h2: clamp(1.5rem, 1.5vw + 0.75rem, 2rem);
+  --text-h3: 1.25rem;
+  --text-body: 1.125rem;
+  --text-small: 0.9375rem;
+  --text-label: 0.75rem;
+
+  --leading-display: 1.1;
+  --leading-heading: 1.2;
+  --leading-body: 1.6;
+
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 2.5rem;
+  --space-6: 3rem;
+  --space-8: 4rem;
+  --space-10: 5rem;
+  --space-12: 6rem;
+
+  --container: 77.5rem;
+  --measure: 42rem;
+  --radius: 0.25rem;
+  --btn-h: 3rem;
+  --shadow: 0 1px 2px rgba(11, 18, 32, 0.06);
+  --nav-h: 4.25rem;
+  --transition: 180ms ease;
+}

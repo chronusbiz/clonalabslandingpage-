@@ -35,16 +35,16 @@ const CAPABILITY_STATS: {
   note: string;
   icon: LucideIcon;
 }[] = [
-  { kicker: "Services", value: "6", max: 6, label: "Service pillars", note: "AI, software, web & mobile, evaluation, delivery, growth", icon: Boxes },
-  { kicker: "Products", value: "4", max: 6, label: "Live products", note: "Clonvo, ProTender, Breaking Portal, Genesis Studio", icon: Package },
+  { kicker: "Engagements", value: "3", max: 6, label: "Focused engagements", note: "Roadmap Sprint, Model Confidence, Fractional CTO + pod", icon: Boxes },
+  { kicker: "Capabilities", value: "6", max: 6, label: "Capability areas", note: "AI, software, web & mobile, evaluation, delivery, growth", icon: Package },
   { kicker: "Delivery", value: "2", max: 6, label: "Delivery hubs", note: "Mississauga, Canada · Lahore, Pakistan", icon: Globe2 },
 ];
 
 const TRUST_META: { icon: LucideIcon; desc: string }[] = [
-  { icon: Layers, desc: "Ready platforms where they fit, custom delivery where they don't." },
-  { icon: Bot, desc: "Applied to real workflows and bottlenecks, not demos." },
-  { icon: BadgeCheck, desc: "We present only live, confirmed product scope." },
-  { icon: MapPin, desc: "Mississauga and Lahore teams, one delivery process." },
+  { icon: Layers, desc: "Technology Roadmap, Model Confidence and Fractional CTO." },
+  { icon: Bot, desc: "AI, software, web, evaluation, delivery and growth." },
+  { icon: BadgeCheck, desc: "Live or Beta — never planned features as available." },
+  { icon: MapPin, desc: "One delivery process across both locations." },
 ];
 
 const ROW_ONE: Chip[] = [
@@ -122,14 +122,14 @@ export default function Partners() {
         <SectionHeading
           compact
           theme="dark"
-          eyebrow="Capability"
+          eyebrow="At a glance"
           title={
             <>
-              Verified delivery capabilities.{" "}
-              <span className="gradient-text">Practical AI.</span>
+              Clear engagements.{" "}
+              <span className="gradient-text">Handover-ready delivery.</span>
             </>
           }
-          description="Products and services, clearly separated. Verified capabilities only — delivery hubs in Canada and Pakistan."
+          description="Three focused engagements, six capability areas, four ready-to-deploy products and two delivery hubs."
         />
 
         <ScrollReveal className="fp-fill">

@@ -15,17 +15,17 @@ export default function Pricing() {
           eyebrow="Products"
           title={
             <>
-              Digital products for{" "}
-              <span className="gradient-text">specific workflow needs.</span>
+              Ready to deploy products for{" "}
+              <span className="gradient-text">specific workflows.</span>
             </>
           }
-          description="Four ready-to-deploy products — verified capabilities only, separate from custom delivery."
+          description="When a ready platform fits, we point you to it. When it does not, we scope something built for you. Every product shows its real status."
           aside={
             <Link
               href={siteConfig.bookingUrl}
               className="fp-btn group inline-flex items-center gap-2 border border-text-dark/10 text-text-dark font-medium transition-all duration-300 hover:border-accent hover:text-accent hover:bg-accent/5"
             >
-              Talk through products
+              Book a technical call
               <ArrowUpRight size={14} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
           }
@@ -49,14 +49,26 @@ export default function Pricing() {
                   <span className="font-heading text-[13px] text-text-dark-muted/60 tabular-nums">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span
-                    className={`inline-flex items-center gap-1.5 px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.16em] ${
-                      product.featured ? "bg-accent text-white" : "border border-card-light-border text-text-dark-muted"
-                    }`}
-                  >
-                    <span className={`h-1.5 w-1.5 rounded-full ${product.featured ? "bg-white" : "bg-emerald-500"}`} />
-                    {product.featured ? "Featured · Live" : product.status}
-                  </span>
+                    <span
+                      className={`inline-flex items-center gap-1.5 px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.16em] ${
+                        product.status === "Live"
+                          ? product.featured
+                            ? "bg-accent text-white"
+                            : "border border-emerald-500/40 text-emerald-700 bg-emerald-50"
+                          : "border border-amber-500/40 text-amber-800 bg-amber-50"
+                      }`}
+                    >
+                      <span
+                        className={`h-1.5 w-1.5 rounded-full ${
+                          product.status === "Live"
+                            ? product.featured
+                              ? "bg-white"
+                              : "bg-emerald-500"
+                            : "bg-amber-500"
+                        }`}
+                      />
+                      {product.featured ? `Featured · ${product.status}` : product.status}
+                    </span>
                 </div>
 
                 <h3 className="fp-card-title font-heading font-bold text-text-dark mb-1">{product.name}</h3>

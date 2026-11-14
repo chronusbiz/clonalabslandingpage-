@@ -1,10 +1,8 @@
-/** Clonalabs text wordmark — used in place of an image logo. */
+/** ClonaLabs text wordmark — colour comes from parent className. */
 export default function Wordmark({ className = "" }: { className?: string }) {
   return (
-    <span
-      className={`font-heading font-black tracking-tight text-white leading-none ${className}`}
-    >
-      Clona<span className="text-accent-light">labs</span>
+    <span className={`font-display tracking-tight leading-none ${className}`}>
+      Clona<span className="text-accent">Labs</span>
     </span>
   );
 }

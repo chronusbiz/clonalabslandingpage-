@@ -150,7 +150,7 @@ export default function Services() {
   const loop = [...serviceCategories, ...serviceCategories];
 
   return (
-    <section id="solutions" className="relative snap-start snap-always bg-light-primary scroll-mt-20">
+    <section id="capabilities" className="relative snap-start snap-always bg-light-primary scroll-mt-20">
       <div className="pointer-events-none absolute inset-0 select-none" aria-hidden="true">
         {FLOATING_SYMBOLS.map((s) => (
           <span key={`${s.char}-${s.className}`} className={`absolute font-mono text-accent leading-none ${s.className}`}>
@@ -162,20 +162,20 @@ export default function Services() {
       <div className="fp-inner relative z-10">
         <SectionHeading
           compact
-          eyebrow="Solutions"
+          eyebrow="Capabilities"
           title={
             <>
-              Practical technology solutions{" "}
-              <span className="gradient-text">for Canadian businesses.</span>
+              Six capability areas,{" "}
+              <span className="gradient-text">one delivery process.</span>
             </>
           }
-          description="Six service pillars — AI, custom software, web & mobile, evaluation, product delivery, and digital presence."
+          description="Pick a single capability or combine them. Every project follows the same scoped, handover-ready approach."
           aside={
             <a
               href="/contact"
               className="fp-btn group inline-flex items-center gap-2 border border-text-dark/10 text-text-dark font-medium transition-colors hover:border-accent hover:text-accent"
             >
-              Discuss a capability
+              Book a technical call
               <ArrowUpRight size={13} />
             </a>
           }

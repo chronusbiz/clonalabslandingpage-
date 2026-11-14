@@ -33,7 +33,7 @@ export default function CookieConsent() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 40 }}
-          className="fixed bottom-0 left-0 right-0 z-50 p-4 sm:p-6"
+          className="fixed bottom-0 left-0 right-0 z-[80] p-4 sm:p-6"
         >
           <div className="max-w-3xl mx-auto bg-dark-secondary border border-card-dark-border p-5 sm:p-6 shadow-2xl shadow-black/40 glass-effect">
             <div className="flex items-start gap-4">

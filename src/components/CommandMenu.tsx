@@ -21,11 +21,14 @@ type Item = {
 
 const staticItems: Item[] = [
   { label: "Home", href: "/", group: "Navigate", icon: Home },
-  { label: "How we work", href: "/#how-we-work", group: "Navigate", icon: Workflow, description: "Discover through Improve in five steps" },
+  { label: "Engagements", href: "/engagements", group: "Navigate", icon: Workflow, description: "Roadmap Sprint, Model Confidence, Fractional CTO" },
+  { label: "How we work", href: "/#how-we-work", group: "Navigate", icon: Workflow, description: "Six stages from Discover to Improve" },
   { label: "Products", href: "/#products", group: "Navigate", icon: CreditCard, description: "Clonvo, ProTender, Breaking Portal, Genesis Studio" },
   { label: "Industries", href: "/#industries", group: "Navigate", icon: Building2, description: "Sectors we build for" },
-  { label: "Solutions", href: "/#solutions", group: "Navigate", icon: Building2, description: "Six service capability pillars" },
+  { label: "Capabilities", href: "/#capabilities", group: "Navigate", icon: Building2, description: "Six capability areas" },
+  { label: "Trust Center", href: "/trust", group: "Navigate", icon: BadgeCheck, description: "How we earn trust" },
   { label: "About ClonaLabs", href: "/about", group: "Navigate", icon: Building2 },
+  { label: "Insights", href: "/insights", group: "Navigate", icon: BookCheck },
   { label: "FAQ", href: "/faq", group: "Navigate", icon: HelpCircle },
   { label: "Privacy Policy", href: "/privacy", group: "Navigate", icon: Scale },
   { label: "Contact", href: "/contact", group: "Actions", icon: Mail, description: "Start a conversation" },
@@ -62,8 +65,8 @@ export default function CommandMenu() {
   const items = useMemo<Item[]>(() => {
     const productItems: Item[] = productPillars.map((p) => ({
       label: p.title,
-      href: "/#solutions",
-      group: "Services",
+      href: "/#capabilities",
+      group: "Capabilities",
       icon: pillarIcons[p.icon] ?? Inbox,
       description: p.description.split(". ")[0].replace(/\.$/, ""),
     }));

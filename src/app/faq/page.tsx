@@ -1,36 +1,28 @@
 import type { Metadata } from "next";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import PageHero from "@/components/ui/PageHero";
-import FAQ from "@/components/FAQ";
-import CTABanner from "@/components/ui/CTABanner";
+import PageShell from "@/components/ui/PageShell";
+import PageIntro from "@/components/ui/PageIntro";
+import FinalCta from "@/components/home/FinalCta";
 import { BreadcrumbSchema } from "@/components/schema/PageSchema";
 import { GlobalFAQSchema } from "@/components/StructuredData";
-import { siteConfig } from "@/lib/constants";
+import { faq, pageSeo } from "@/lib/constants";
 
-const DESCRIPTION =
-  "Answers about Clonalabs and Clonvo: white-label reselling, pricing, channels, cited AI replies, human handoff, security, and how to get started.";
+const seo = pageSeo.faq;
 
 export const metadata: Metadata = {
-  title: "FAQ",
-  description: DESCRIPTION,
+  title: seo.title.replace(" | ClonaLabs", ""),
+  description: seo.description,
   alternates: { canonical: "/faq" },
   openGraph: {
-    title: "FAQ — Clonalabs",
-    description: DESCRIPTION,
+    title: seo.title,
+    description: seo.description,
     url: "/faq",
     type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "FAQ — Clonalabs",
-    description: DESCRIPTION,
   },
 };
 
 export default function FAQPage() {
   return (
-    <>
+    <PageShell>
       <GlobalFAQSchema />
       <BreadcrumbSchema
         crumbs={[
@@ -38,30 +30,42 @@ export default function FAQPage() {
           { label: "FAQ", path: "/faq" },
         ]}
       />
-      <Navbar />
-      <main id="main-content">
-        <PageHero
-          size="compact"
-          badge="FAQ"
-          title="Frequently"
-          highlight="asked questions."
-          description="White-label reselling, pricing, channels, security, and getting started — answered directly."
-        />
+      <PageIntro
+        label="FAQ"
+        title="Frequently asked questions."
+        description="Engagements, pricing, data handling, ownership, products and working with a Canadian technology partner."
+      />
 
-        <div className="bg-dark-secondary">
-          <FAQ />
+      <section className="bg-surface" aria-labelledby="faq-list-heading">
+        <div className="container-site section">
+          <h2 id="faq-list-heading" className="sr-only">
+            Questions and answers
+          </h2>
+          <div className="border-t border-border max-w-3xl">
+            {faq.map((item) => (
+              <details
+                key={item.question}
+                className="ruled group py-5"
+              >
+                <summary className="cursor-pointer list-none flex items-start justify-between gap-4 text-h3 text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent">
+                  <span>{item.question}</span>
+                  <span
+                    className="font-mono text-accent text-small shrink-0 mt-1 group-open:rotate-45 transition-transform"
+                    aria-hidden
+                  >
+                    +
+                  </span>
+                </summary>
+                <p className="mt-3 text-body text-text-muted prose-measure">
+                  {item.answer}
+                </p>
+              </details>
+            ))}
+          </div>
         </div>
+      </section>
 
-        <CTABanner
-          title="Question not"
-          highlight="answered here?"
-          description="Book a 15-minute walkthrough and ask us directly."
-          buttonText={siteConfig.bookingLabel}
-          buttonHref={siteConfig.bookingUrl}
-          dark={false}
-        />
-      </main>
-      <Footer />
-    </>
+      <FinalCta />
+    </PageShell>
   );
 }

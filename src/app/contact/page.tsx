@@ -9,21 +9,21 @@ import ContactForm from "@/components/ContactForm";
 import { siteConfig } from "@/lib/constants";
 
 const DESCRIPTION =
-  "Contact Clonalabs to resell Clonvo under your agency's brand. Book a 15-minute walkthrough, email support@clonvo.chat, or call us.";
+  "Book a 15 minute intro call with ClonaLabs. Tell us your goals and systems and we will suggest the right next step. No commitment.";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: "Book a Technical Call",
   description: DESCRIPTION,
   alternates: { canonical: "/contact" },
   openGraph: {
-    title: "Contact Clonalabs",
+    title: "Book a Technical Call | ClonaLabs",
     description: DESCRIPTION,
     url: "/contact",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Contact Clonalabs",
+    title: "Book a Technical Call | ClonaLabs",
     description: DESCRIPTION,
   },
 };
@@ -49,13 +49,13 @@ export default function ContactPage() {
       <main id="main-content">
         {/* Hero */}
         <PageHero
-          badge="Get in Touch"
-          title="Let's put your brand on"
-          highlight="AI inquiry handling."
-          description="Tell us about your agency and clients, or book a 15-minute walkthrough of Clonvo."
+          badge="Contact"
+          title="Let's talk about what you are"
+          highlight="building."
+          description="Book a 15-minute intro call. Tell us about your goals, your systems and the problem you want solved, and we will tell you honestly whether we can help."
           bgImage="/images/contact-hero.jpg"
           bgImageOpacity={0.18}
-          primaryCta={{ label: "Send a message", href: "#contact-form" }}
+          primaryCta={{ label: "Request a call", href: "#contact-form" }}
           secondaryCta={{ label: siteConfig.bookingLabel, href: siteConfig.bookingUrl }}
         />
 

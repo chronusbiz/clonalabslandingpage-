@@ -34,13 +34,6 @@ export default function Hero() {
               "radial-gradient(circle, color-mix(in srgb, var(--accent) 22%, transparent) 0%, transparent 60%)",
           }}
         />
-        <div
-          className="absolute bottom-0 left-1/4 w-[400px] h-[400px] pointer-events-none opacity-60"
-          style={{
-            background:
-              "radial-gradient(circle, color-mix(in srgb, var(--accent-light) 12%, transparent) 0%, transparent 70%)",
-          }}
-        />
       </div>
 
       <div className="fp-inner relative z-10 !justify-center">
@@ -52,32 +45,32 @@ export default function Hero() {
         >
           <HeroEyebrow label="CLONALABS" icon={Sparkles} />
 
-          <h1 className="fp-title font-heading text-white max-w-3xl !text-[clamp(2.25rem,4.4vh+0.85rem,3.85rem)]">
-            Technology that works harder{" "}
-            <span className="gradient-text">for your business.</span>
+          <h1 className="fp-title font-heading text-white max-w-3xl !text-[clamp(2.1rem,4vh+0.8rem,3.6rem)]">
+            AI and software built for Canadian businesses{" "}
+            <span className="gradient-text">that need it to work.</span>
           </h1>
 
           <p className="fp-lead text-white/65 max-w-xl">
-            ClonaLabs helps Canadian businesses improve operations, build custom
-            digital solutions and put practical AI to work—with technology shaped
-            around real business needs.
+            ClonaLabs is an AI and software engineering partner for Canadian teams.
+            We take an idea or a stalled project and turn it into a production system,
+            with clear scope, senior ownership and delivery your own engineers can take over.
           </p>
 
           <div className="flex flex-col sm:flex-row items-start gap-3">
             <MagneticButton strength={4}>
               <Link
                 href={siteConfig.bookingUrl}
-                className="fp-btn hero-cta-glow group relative inline-flex items-center justify-center gap-2 font-semibold rounded-md bg-white text-dark-primary uppercase tracking-widest shadow-lg shadow-black/20 transition-all duration-300 hover:bg-accent hover:text-white hover:shadow-xl hover:shadow-accent/30 active:scale-[0.98]"
+                className="fp-btn hero-cta-glow group relative inline-flex items-center justify-center gap-2 font-semibold rounded-md bg-white text-dark-primary uppercase tracking-widest shadow-lg shadow-black/20 transition-all duration-300 hover:bg-accent hover:text-white"
               >
                 {siteConfig.bookingLabel}
                 <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </MagneticButton>
             <Link
-              href="/#solutions"
-              className="fp-btn group inline-flex items-center justify-center gap-2 font-medium rounded-md border border-white/25 text-white uppercase tracking-widest backdrop-blur-sm transition-all duration-300 hover:border-white/60 hover:bg-white/10 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]"
+              href="/engagements"
+              className="fp-btn group inline-flex items-center justify-center gap-2 font-medium rounded-md border border-white/25 text-white uppercase tracking-widest backdrop-blur-sm transition-all duration-300 hover:border-white/60 hover:bg-white/10"
             >
-              Explore Solutions
+              See our engagements
               <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
           </div>
@@ -87,7 +80,7 @@ export default function Hero() {
               <div key={p.label} className="text-left">
                 <dt className="sr-only">{p.label}</dt>
                 <dd>
-                  <p className="font-heading text-xl sm:text-2xl font-black text-white leading-none tracking-tight mb-1.5">
+                  <p className="font-heading text-xl sm:text-2xl font-bold text-white leading-none tracking-tight mb-1.5">
                     {p.value}
                   </p>
                   <p className="fp-label text-white/50 leading-snug normal-case tracking-normal font-medium">

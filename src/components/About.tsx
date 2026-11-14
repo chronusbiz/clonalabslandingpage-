@@ -5,9 +5,9 @@ import { motion } from "framer-motion";
 import {
   ArrowRight,
   ShieldCheck,
-  Handshake,
-  Layers,
-  MessageSquare,
+  ListChecks,
+  Users,
+  FileText,
   type LucideIcon,
 } from "lucide-react";
 import SpotlightCard from "./ui/SpotlightCard";
@@ -15,9 +15,9 @@ import SectionHeading from "./ui/SectionHeading";
 import { siteConfig, whyChooseUs, linkTargetProps } from "@/lib/constants";
 
 const pillarIcons: Record<string, LucideIcon> = {
-  Handshake,
-  Layers,
-  MessageSquare,
+  ListChecks,
+  Users,
+  FileText,
   ShieldCheck,
 };
 
@@ -51,11 +51,11 @@ export default function About() {
           eyebrow="Why ClonaLabs"
           title={
             <>
-              Technology shaped around{" "}
-              <span className="gradient-text">real business needs.</span>
+              Why teams choose{" "}
+              <span className="gradient-text">ClonaLabs.</span>
             </>
           }
-          description="Products like Clonvo where they fit, scoped delivery when you need something built for your workflow."
+          description="Scope first, senior ownership, handover-ready delivery and honest product status."
           aside={
             <div className="flex flex-wrap items-center gap-3">
               <Link
@@ -79,7 +79,7 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-12 grid-rows-[minmax(0,1fr)] gap-6 lg:gap-10 fp-fill">
           <div className="lg:col-span-7 grid grid-cols-2 grid-rows-[minmax(0,1fr)_minmax(0,1fr)] gap-4 min-h-0">
             {whyChooseUs.map((p, i) => {
-              const Icon = pillarIcons[p.icon] ?? Handshake;
+                const Icon = pillarIcons[p.icon] ?? ListChecks;
               return (
                 <SpotlightCard
                   key={p.label}

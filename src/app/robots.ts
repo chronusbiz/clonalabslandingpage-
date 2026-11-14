@@ -1,8 +1,9 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/constants";
 
+const SITE = process.env.NEXT_PUBLIC_SITE_URL || siteConfig.url;
+
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || siteConfig.url;
   const isPreview =
     process.env.VERCEL_ENV === "preview" ||
     process.env.NEXT_PUBLIC_ROBOTS_DISALLOW === "true";
@@ -21,7 +22,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/_next/"],
       },
     ],
-    sitemap: `${baseUrl}/sitemap.xml`,
-    host: baseUrl,
+    sitemap: `${SITE}/sitemap.xml`,
+    host: SITE,
   };
 }
