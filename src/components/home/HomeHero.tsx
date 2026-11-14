@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { siteConfig } from "@/lib/constants";
+import { linkTargetProps, siteConfig } from "@/lib/constants";
 
 export default function HomeHero() {
   const [reduceMotion, setReduceMotion] = useState(false);
@@ -75,7 +75,11 @@ export default function HomeHero() {
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
-            <Link href={siteConfig.bookingUrl} className="btn btn-primary">
+            <Link
+              href={siteConfig.bookingUrl}
+              {...linkTargetProps(siteConfig.bookingUrl)}
+              className="btn btn-primary"
+            >
               {siteConfig.bookingLabel}
             </Link>
             <Link

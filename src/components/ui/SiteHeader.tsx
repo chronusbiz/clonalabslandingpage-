@@ -4,7 +4,7 @@ import { useCallback, useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
-import { navLinks, navMega, siteConfig } from "@/lib/constants";
+import { linkTargetProps, navLinks, navMega, siteConfig } from "@/lib/constants";
 import Wordmark from "./Wordmark";
 
 type MegaKey = keyof typeof navMega;
@@ -195,6 +195,7 @@ export default function SiteHeader() {
           <div className="flex items-center justify-end gap-2">
             <Link
               href={siteConfig.bookingUrl}
+              {...linkTargetProps(siteConfig.bookingUrl)}
               className="btn btn-primary hidden sm:inline-flex !h-10 !px-4 text-[0.8125rem]"
             >
               {siteConfig.bookingLabel}
@@ -361,6 +362,7 @@ export default function SiteHeader() {
               })}
               <Link
                 href={siteConfig.bookingUrl}
+                {...linkTargetProps(siteConfig.bookingUrl)}
                 className="btn btn-primary mt-5 w-full"
                 onClick={() => setMobileOpen(false)}
               >

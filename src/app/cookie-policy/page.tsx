@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import PageHero from "@/components/ui/PageHero";
 import CTABanner from "@/components/ui/CTABanner";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import { siteConfig } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Cookie Policy",
@@ -71,7 +72,7 @@ const generalSections = [
   },
   {
     title: "Contact",
-    content: "If you have questions about our use of cookies, contact us at support@clonvo.chat.",
+    content: `If you have questions about our use of cookies, contact us at ${siteConfig.emails.join(" or ")}.`,
   },
 ];
 

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { siteConfig } from "@/lib/constants";
+import { linkTargetProps, siteConfig } from "@/lib/constants";
 
 type Cta = { label: string; href: string };
 
@@ -48,12 +48,17 @@ export default function PageIntro({
         <div className="mt-8 flex flex-wrap items-center gap-4">
           <Link
             href={primary.href}
+            {...linkTargetProps(primary.href)}
             className={`btn ${ink ? "btn-on-ink" : "btn-primary"}`}
           >
             {primary.label}
           </Link>
           {secondaryCta && (
-            <Link href={secondaryCta.href} className="link-text">
+            <Link
+              href={secondaryCta.href}
+              {...linkTargetProps(secondaryCta.href)}
+              className="link-text"
+            >
               {secondaryCta.label}
             </Link>
           )}

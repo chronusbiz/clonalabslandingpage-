@@ -43,12 +43,14 @@ function OrganizationSchema() {
             addressCountry: "PK",
           },
         ],
-        contactPoint: {
+        email: [...siteConfig.emails],
+        contactPoint: siteConfig.emails.map((email) => ({
           "@type": "ContactPoint",
-          email: siteConfig.email,
+          email,
           telephone: siteConfig.phone,
           contactType: "customer service",
-        },
+          availableLanguage: ["English"],
+        })),
         knowsAbout: [
           "Custom software development",
           "Practical AI systems",

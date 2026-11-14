@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { siteConfig } from "@/lib/constants";
+import { linkTargetProps, siteConfig } from "@/lib/constants";
 
 export default function FinalCta() {
   return (
@@ -13,7 +13,11 @@ export default function FinalCta() {
             Book a technical call. We will listen to your goals and systems, then
             suggest the right next step—engagement, product or a clear no.
           </p>
-          <Link href={siteConfig.bookingUrl} className="btn btn-on-ink">
+          <Link
+            href={siteConfig.bookingUrl}
+            {...linkTargetProps(siteConfig.bookingUrl)}
+            className="btn btn-on-ink"
+          >
             {siteConfig.bookingLabel}
           </Link>
         </div>

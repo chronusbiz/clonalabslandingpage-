@@ -40,7 +40,32 @@ export default function SiteFooter() {
           ))}
 
           <div className="col-span-2 md:col-span-4 lg:col-span-4 lg:pl-6 lg:border-l lg:border-white/10 space-y-5">
-            <p className="label text-text-on-ink-muted">Offices</p>
+            <p className="label text-text-on-ink-muted">Contact</p>
+            <div className="space-y-2">
+              {siteConfig.emails.map((email) => (
+                <a
+                  key={email}
+                  href={`mailto:${email}`}
+                  className="block text-small text-text-on-ink-muted hover:text-text-on-ink transition-colors"
+                >
+                  {email}
+                </a>
+              ))}
+              <a
+                href={`tel:${siteConfig.phone}`}
+                className="block text-small text-text-on-ink-muted hover:text-text-on-ink transition-colors"
+              >
+                {siteConfig.phoneDisplay}
+              </a>
+              <Link
+                href={siteConfig.bookingUrl}
+                {...linkTargetProps(siteConfig.bookingUrl)}
+                className="inline-block text-small text-accent hover:text-accent-hover transition-colors pt-1"
+              >
+                {siteConfig.bookingLabel}
+              </Link>
+            </div>
+            <p className="label text-text-on-ink-muted pt-2">Offices</p>
             {siteConfig.offices.map((o) => (
               <address key={o.country} className="not-italic flex gap-3">
                 <MapPin size={16} className="text-accent shrink-0 mt-0.5" aria-hidden />

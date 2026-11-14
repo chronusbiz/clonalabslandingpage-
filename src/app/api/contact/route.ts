@@ -31,7 +31,7 @@ const isProd = process.env.NODE_ENV === "production";
 
 // Default destination for all contact submissions. Can be overridden with
 // CONTACT_TO_EMAIL env var without touching code.
-const DEFAULT_TO_EMAIL = "support@clonvo.chat";
+const DEFAULT_TO_EMAIL = "hannah@clonalabs.ca,abdul@clonalabs.ca";
 
 function validEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -83,7 +83,7 @@ async function sendViaResend(opts: {
     },
     body: JSON.stringify({
       from: `Clonalabs Website <${opts.from}>`,
-      to: [opts.to],
+      to: opts.to.split(",").map((e) => e.trim()).filter(Boolean),
       reply_to: opts.replyTo,
       subject: opts.subject,
       text: opts.text,
